@@ -1,0 +1,8 @@
+C:\Documents and Settings\mike.chambers\My Documents\Visual Studio 2005\Projects\WallpaperMaker\WallpaperMaker\obj\Debug\WallpaperMaker.exe
+C:\Documents and Settings\mike.chambers\My Documents\Visual Studio 2005\Projects\WallpaperMaker\WallpaperMaker\obj\Debug\WallpaperMaker.pdb
+C:\Documents and Settings\mike.chambers\My Documents\Visual Studio 2005\Projects\WallpaperMaker\WallpaperMaker\bin\Debug\WallpaperMaker.exe
+C:\Documents and Settings\mike.chambers\My Documents\Visual Studio 2005\Projects\WallpaperMaker\WallpaperMaker\bin\Debug\WallpaperMaker.pdb
+C:\Documents and Settings\mike.chambers\My Documents\Visual Studio 2005\Projects\WallpaperMaker\WallpaperMaker\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\mike.chambers\My Documents\Visual Studio 2005\Projects\WallpaperMaker\WallpaperMaker\obj\Debug\WindowsApplication1.Main.resources
+C:\Documents and Settings\mike.chambers\My Documents\Visual Studio 2005\Projects\WallpaperMaker\WallpaperMaker\obj\Debug\WindowsApplication1.Properties.Resources.resources
+C:\Documents and Settings\mike.chambers\My Documents\Visual Studio 2005\Projects\WallpaperMaker\WallpaperMaker\obj\Debug\WallpaperMaker.csproj.GenerateResource.Cache
