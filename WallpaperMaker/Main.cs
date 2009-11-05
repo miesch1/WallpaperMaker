@@ -14,24 +14,52 @@ namespace WindowsApplication1
 		Image openedPicture;
 		Image modifiedPicture;
 
+		enum VerticalCropping { Top, Center, Bottom };
+		enum HoriztonalCropping { Left, Center, Right };
+
 		public Main()
 		{
 			InitializeComponent();
 			heightTextBox.Text = SystemInformation.PrimaryMonitorSize.Height.ToString();
 			widthTextBox.Text = SystemInformation.PrimaryMonitorSize.Width.ToString();
-
 			DisableControls();
+		}
+
+		private void EnableControls()
+		{
+			heightTextBox.ReadOnly = false;
+			widthTextBox.ReadOnly = false;
+			savePictureButton.Enabled = true;
+			setWallpaperButton.Enabled = true;
+			croppingOptionComboBox.Enabled = true;
+			saveAsToolStripMenuItem.Enabled = true;
+			setAsWallpaperToolStripMenuItem.Enabled = true;
 		}
 
 		private void DisableControls()
 		{
 			heightTextBox.ReadOnly = true;
 			widthTextBox.ReadOnly = true;
-			flowLayoutPanel1.Enabled = false;
-			comboBox1.Enabled = false;
-			button1.Enabled = false;
+			savePictureButton.Enabled = false;
+			setWallpaperButton.Enabled = false;
+			croppingOptionComboBox.Enabled = false;
 			saveAsToolStripMenuItem.Enabled = false;
 			setAsWallpaperToolStripMenuItem.Enabled = false;
+		}
+
+		private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void closePictureButton_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void closeToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+
 		}
 
 		private void openPictureButton_Click(object sender, EventArgs e)
@@ -52,7 +80,7 @@ namespace WindowsApplication1
 			openPictureDialog.FilterIndex = 1;
 			openPictureDialog.RestoreDirectory = false;
 
-			if(openPictureDialog.ShowDialog() == DialogResult.OK)
+			if (openPictureDialog.ShowDialog() == DialogResult.OK)
 			{
 				EnableControls();
 				jordanDunkToolStripMenuItem.Checked = false;
@@ -74,20 +102,9 @@ namespace WindowsApplication1
 			}
 		}
 
-		private void EnableControls()
-		{
-			heightTextBox.ReadOnly = false;
-			widthTextBox.ReadOnly = false;
-			flowLayoutPanel1.Enabled = true;
-			comboBox1.Enabled = true;
-			button1.Enabled = true;
-			saveAsToolStripMenuItem.Enabled = true;
-			setAsWallpaperToolStripMenuItem.Enabled = true;
-		}
-
 		private void jordanDunkToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			if(jordanDunkToolStripMenuItem.Checked)
+			if (jordanDunkToolStripMenuItem.Checked)
 			{
 				// play the clip
 				DisableControls();
@@ -113,6 +130,16 @@ namespace WindowsApplication1
 			SavePicture();
 		}
 
+		private void setWallpaperButton_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void setAsWallpaperToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+
+		}
+
 		private void SavePicture()
 		{
 			SaveFileDialog saveDialog = new SaveFileDialog();
@@ -129,7 +156,7 @@ namespace WindowsApplication1
 				"_" + modifiedPicture.Width + "x" + modifiedPicture.Height
 			);
 
-			if(saveDialog.ShowDialog() == DialogResult.OK)
+			if (saveDialog.ShowDialog() == DialogResult.OK)
 			{
 
 			}
@@ -147,17 +174,12 @@ namespace WindowsApplication1
 		{
 			string returnString;
 
-			if(replaceString != "" && fileName.Contains(replaceString))
+			if (replaceString != "" && fileName.Contains(replaceString))
 				returnString = fileName.Replace(replaceString, newString);
 			else
 				returnString = fileName + newString;
 
 			return returnString;
-		}
-
-		private void setWallpaperButton_Click(object sender, EventArgs e)
-		{
-
 		}
 	}
 }

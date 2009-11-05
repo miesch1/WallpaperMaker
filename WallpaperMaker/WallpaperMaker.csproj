@@ -1,15 +1,21 @@
-﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.50727</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{FF4D2C25-8626-426D-BE2B-E9E3E818D06F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WindowsApplication1</RootNamespace>
     <AssemblyName>WallpaperMaker</AssemblyName>
-    <ApplicationIcon>Icon1.ico</ApplicationIcon>
+    <ApplicationIcon>joran_exe.ico</ApplicationIcon>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -58,6 +64,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -70,9 +77,17 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="icon.jpg" />
-    <Content Include="Icon1.ico" />
-    <Content Include="Icon4.ico" />
+    <Content Include="joran_exe.ico" />
+    <Content Include="jordan_form.ico" />
+    <None Include="Resources\Extras.png" />
+    <None Include="Resources\File.png" />
+    <None Include="Resources\Help.png" />
+    <None Include="Resources\About.png" />
+    <None Include="Resources\Watch.png" />
+    <None Include="Resources\SetWallpaper.png" />
+    <None Include="Resources\Open.png" />
+    <None Include="Resources\Close.png" />
+    <None Include="Resources\Save.png" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
