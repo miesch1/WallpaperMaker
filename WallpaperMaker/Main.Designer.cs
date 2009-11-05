@@ -55,6 +55,7 @@ namespace WindowsApplication1
 			this.jordanDunkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.previewGroupBox.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.picturePreview)).BeginInit();
 			this.tableLayoutPanel1.SuspendLayout();
@@ -245,7 +246,7 @@ namespace WindowsApplication1
 			this.setWallpaperButton.Text = "Set As Wallpaper";
 			this.setWallpaperButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.setWallpaperButton.UseVisualStyleBackColor = true;
-			this.setWallpaperButton.Click += new System.EventHandler(this.setWallpaperButton_Click);
+			this.setWallpaperButton.Click += new System.EventHandler(this.setAsWallpaperButton_Click);
 			// 
 			// menuStrip1
 			// 
@@ -266,7 +267,8 @@ namespace WindowsApplication1
             this.openToolStripMenuItem,
             this.closeToolStripMenuItem,
             this.saveAsToolStripMenuItem,
-            this.setAsWallpaperToolStripMenuItem});
+            this.setAsWallpaperToolStripMenuItem,
+            this.exitToolStripMenuItem});
 			this.fileToolStripMenuItem.Image = global::WindowsApplication1.Properties.Resources.File;
 			this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
 			this.fileToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
@@ -335,9 +337,16 @@ namespace WindowsApplication1
 			// 
 			this.aboutToolStripMenuItem.Image = global::WindowsApplication1.Properties.Resources.About;
 			this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-			this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.aboutToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
 			this.aboutToolStripMenuItem.Text = "About";
 			this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+			// 
+			// exitToolStripMenuItem
+			// 
+			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+			this.exitToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+			this.exitToolStripMenuItem.Text = "Exit";
+			this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
 			// 
 			// Main
 			// 
@@ -399,6 +408,7 @@ namespace WindowsApplication1
 		private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem setAsWallpaperToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
     }
 }
 

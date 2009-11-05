@@ -29,20 +29,26 @@ namespace WindowsApplication1
 		{
 			heightTextBox.ReadOnly = false;
 			widthTextBox.ReadOnly = false;
+			closePictureButton.Enabled = true;
 			savePictureButton.Enabled = true;
 			setWallpaperButton.Enabled = true;
 			croppingOptionComboBox.Enabled = true;
+			closeToolStripMenuItem.Enabled = true;
 			saveAsToolStripMenuItem.Enabled = true;
 			setAsWallpaperToolStripMenuItem.Enabled = true;
 		}
 
 		private void DisableControls()
 		{
+			openPictureButton.Focus();
+
 			heightTextBox.ReadOnly = true;
 			widthTextBox.ReadOnly = true;
+			closePictureButton.Enabled = false;
 			savePictureButton.Enabled = false;
 			setWallpaperButton.Enabled = false;
 			croppingOptionComboBox.Enabled = false;
+			closeToolStripMenuItem.Enabled = false;
 			saveAsToolStripMenuItem.Enabled = false;
 			setAsWallpaperToolStripMenuItem.Enabled = false;
 		}
@@ -54,12 +60,14 @@ namespace WindowsApplication1
 
 		private void closePictureButton_Click(object sender, EventArgs e)
 		{
-
+			DisableControls();
+			picturePreview.Image = null;
 		}
 
 		private void closeToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-
+			DisableControls();
+			picturePreview.Image = null;
 		}
 
 		private void openPictureButton_Click(object sender, EventArgs e)
@@ -130,7 +138,7 @@ namespace WindowsApplication1
 			SavePicture();
 		}
 
-		private void setWallpaperButton_Click(object sender, EventArgs e)
+		private void setAsWallpaperButton_Click(object sender, EventArgs e)
 		{
 
 		}
@@ -138,6 +146,11 @@ namespace WindowsApplication1
 		private void setAsWallpaperToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 
+		}
+
+		private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			this.Close();
 		}
 
 		private void SavePicture()
