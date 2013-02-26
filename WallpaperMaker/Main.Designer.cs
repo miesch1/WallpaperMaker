@@ -28,325 +28,339 @@ namespace WindowsApplication1
         /// </summary>
         private void InitializeComponent()
         {
+			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
-			this.previewGroupBox = new System.Windows.Forms.GroupBox();
-			this.picturePreview = new System.Windows.Forms.PictureBox();
-			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-			this.optionsGroupBox = new System.Windows.Forms.GroupBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.croppingOptionComboBox = new System.Windows.Forms.ComboBox();
-			this.widthLabel = new System.Windows.Forms.Label();
-			this.heightLabel = new System.Windows.Forms.Label();
-			this.widthTextBox = new System.Windows.Forms.TextBox();
-			this.heightTextBox = new System.Windows.Forms.TextBox();
-			this.actionsGroupBox = new System.Windows.Forms.GroupBox();
-			this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-			this.openPictureButton = new System.Windows.Forms.Button();
-			this.closePictureButton = new System.Windows.Forms.Button();
-			this.savePictureButton = new System.Windows.Forms.Button();
-			this.setWallpaperButton = new System.Windows.Forms.Button();
-			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.setAsWallpaperToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.extrasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.jordanDunkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.previewGroupBox.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.picturePreview)).BeginInit();
-			this.tableLayoutPanel1.SuspendLayout();
-			this.optionsGroupBox.SuspendLayout();
-			this.actionsGroupBox.SuspendLayout();
-			this.flowLayoutPanel1.SuspendLayout();
-			this.menuStrip1.SuspendLayout();
+			this.mPreviewGroupBox = new System.Windows.Forms.GroupBox();
+			this.mPicturePreviewBox = new System.Windows.Forms.PictureBox();
+			this.mTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+			this.mOptionsGroupBox = new System.Windows.Forms.GroupBox();
+			this.mCroppingOptionLabel = new System.Windows.Forms.Label();
+			this.mCroppingOptionComboBox = new System.Windows.Forms.ComboBox();
+			this.mWidthLabel = new System.Windows.Forms.Label();
+			this.mHeightLabel = new System.Windows.Forms.Label();
+			this.mWidthTextBox = new WindowsApplication1.UInt32NumericUpDown();
+			this.mHeightTextBox = new WindowsApplication1.UInt32NumericUpDown();
+			this.mActionsGroupBox = new System.Windows.Forms.GroupBox();
+			this.mFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
+			this.mOpenPictureButton = new System.Windows.Forms.Button();
+			this.mClosePictureButton = new System.Windows.Forms.Button();
+			this.mSavePictureButton = new System.Windows.Forms.Button();
+			this.mSetWallpaperButton = new System.Windows.Forms.Button();
+			this.mMenuStrip = new System.Windows.Forms.MenuStrip();
+			this.mFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.mOpenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.mCloseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.mSaveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.mSetAsWallpaperToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.mExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.mExtrasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.mJordanDunkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.mHelpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.mAboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.mTimer = new System.Windows.Forms.Timer(this.components);
+			this.mPreviewGroupBox.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.mPicturePreviewBox)).BeginInit();
+			this.mTableLayoutPanel.SuspendLayout();
+			this.mOptionsGroupBox.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.mWidthTextBox)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.mHeightTextBox)).BeginInit();
+			this.mActionsGroupBox.SuspendLayout();
+			this.mFlowLayoutPanel.SuspendLayout();
+			this.mMenuStrip.SuspendLayout();
 			this.SuspendLayout();
 			// 
-			// previewGroupBox
+			// mPreviewGroupBox
 			// 
-			this.previewGroupBox.Controls.Add(this.picturePreview);
-			this.previewGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.previewGroupBox.Location = new System.Drawing.Point(168, 3);
-			this.previewGroupBox.Name = "previewGroupBox";
-			this.tableLayoutPanel1.SetRowSpan(this.previewGroupBox, 2);
-			this.previewGroupBox.Size = new System.Drawing.Size(383, 306);
-			this.previewGroupBox.TabIndex = 1;
-			this.previewGroupBox.TabStop = false;
-			this.previewGroupBox.Text = "Preview";
+			this.mPreviewGroupBox.Controls.Add(this.mPicturePreviewBox);
+			this.mPreviewGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.mPreviewGroupBox.Location = new System.Drawing.Point(168, 3);
+			this.mPreviewGroupBox.Name = "mPreviewGroupBox";
+			this.mTableLayoutPanel.SetRowSpan(this.mPreviewGroupBox, 2);
+			this.mPreviewGroupBox.Size = new System.Drawing.Size(383, 306);
+			this.mPreviewGroupBox.TabIndex = 1;
+			this.mPreviewGroupBox.TabStop = false;
+			this.mPreviewGroupBox.Text = "Preview";
 			// 
-			// picturePreview
+			// mPicturePreviewBox
 			// 
-			this.picturePreview.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.picturePreview.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.picturePreview.InitialImage = null;
-			this.picturePreview.Location = new System.Drawing.Point(3, 16);
-			this.picturePreview.MinimumSize = new System.Drawing.Size(4, 50);
-			this.picturePreview.Name = "picturePreview";
-			this.picturePreview.Size = new System.Drawing.Size(377, 287);
-			this.picturePreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-			this.picturePreview.TabIndex = 0;
-			this.picturePreview.TabStop = false;
+			this.mPicturePreviewBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.mPicturePreviewBox.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.mPicturePreviewBox.InitialImage = null;
+			this.mPicturePreviewBox.Location = new System.Drawing.Point(3, 16);
+			this.mPicturePreviewBox.MinimumSize = new System.Drawing.Size(4, 50);
+			this.mPicturePreviewBox.Name = "mPicturePreviewBox";
+			this.mPicturePreviewBox.Size = new System.Drawing.Size(377, 287);
+			this.mPicturePreviewBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.mPicturePreviewBox.TabIndex = 0;
+			this.mPicturePreviewBox.TabStop = false;
 			// 
-			// tableLayoutPanel1
+			// mTableLayoutPanel
 			// 
-			this.tableLayoutPanel1.AutoSize = true;
-			this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.tableLayoutPanel1.ColumnCount = 2;
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 165F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-			this.tableLayoutPanel1.Controls.Add(this.optionsGroupBox, 0, 1);
-			this.tableLayoutPanel1.Controls.Add(this.actionsGroupBox, 0, 0);
-			this.tableLayoutPanel1.Controls.Add(this.previewGroupBox, 1, 0);
-			this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
-			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-			this.tableLayoutPanel1.RowCount = 2;
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 58.97436F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 41.02564F));
-			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-			this.tableLayoutPanel1.Size = new System.Drawing.Size(552, 312);
-			this.tableLayoutPanel1.TabIndex = 8;
+			this.mTableLayoutPanel.AutoSize = true;
+			this.mTableLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.mTableLayoutPanel.ColumnCount = 2;
+			this.mTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 165F));
+			this.mTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+			this.mTableLayoutPanel.Controls.Add(this.mOptionsGroupBox, 0, 1);
+			this.mTableLayoutPanel.Controls.Add(this.mActionsGroupBox, 0, 0);
+			this.mTableLayoutPanel.Controls.Add(this.mPreviewGroupBox, 1, 0);
+			this.mTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.mTableLayoutPanel.Location = new System.Drawing.Point(0, 24);
+			this.mTableLayoutPanel.Name = "mTableLayoutPanel";
+			this.mTableLayoutPanel.RowCount = 2;
+			this.mTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 58.97436F));
+			this.mTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 41.02564F));
+			this.mTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+			this.mTableLayoutPanel.Size = new System.Drawing.Size(552, 312);
+			this.mTableLayoutPanel.TabIndex = 8;
 			// 
-			// optionsGroupBox
+			// mOptionsGroupBox
 			// 
-			this.optionsGroupBox.Controls.Add(this.label1);
-			this.optionsGroupBox.Controls.Add(this.croppingOptionComboBox);
-			this.optionsGroupBox.Controls.Add(this.widthLabel);
-			this.optionsGroupBox.Controls.Add(this.heightLabel);
-			this.optionsGroupBox.Controls.Add(this.widthTextBox);
-			this.optionsGroupBox.Controls.Add(this.heightTextBox);
-			this.optionsGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.optionsGroupBox.Location = new System.Drawing.Point(3, 187);
-			this.optionsGroupBox.Name = "optionsGroupBox";
-			this.optionsGroupBox.Size = new System.Drawing.Size(159, 122);
-			this.optionsGroupBox.TabIndex = 9;
-			this.optionsGroupBox.TabStop = false;
-			this.optionsGroupBox.Text = "Options";
+			this.mOptionsGroupBox.Controls.Add(this.mCroppingOptionLabel);
+			this.mOptionsGroupBox.Controls.Add(this.mCroppingOptionComboBox);
+			this.mOptionsGroupBox.Controls.Add(this.mWidthLabel);
+			this.mOptionsGroupBox.Controls.Add(this.mHeightLabel);
+			this.mOptionsGroupBox.Controls.Add(this.mWidthTextBox);
+			this.mOptionsGroupBox.Controls.Add(this.mHeightTextBox);
+			this.mOptionsGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.mOptionsGroupBox.Location = new System.Drawing.Point(3, 187);
+			this.mOptionsGroupBox.Name = "mOptionsGroupBox";
+			this.mOptionsGroupBox.Size = new System.Drawing.Size(159, 122);
+			this.mOptionsGroupBox.TabIndex = 9;
+			this.mOptionsGroupBox.TabStop = false;
+			this.mOptionsGroupBox.Text = "Options";
 			// 
-			// label1
+			// mCroppingOptionLabel
 			// 
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(30, 76);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(81, 13);
-			this.label1.TabIndex = 8;
-			this.label1.Text = "Cropping option";
+			this.mCroppingOptionLabel.AutoSize = true;
+			this.mCroppingOptionLabel.Location = new System.Drawing.Point(30, 76);
+			this.mCroppingOptionLabel.Name = "mCroppingOptionLabel";
+			this.mCroppingOptionLabel.Size = new System.Drawing.Size(81, 13);
+			this.mCroppingOptionLabel.TabIndex = 8;
+			this.mCroppingOptionLabel.Text = "Cropping option";
 			// 
-			// croppingOptionComboBox
+			// mCroppingOptionComboBox
 			// 
-			this.croppingOptionComboBox.FormattingEnabled = true;
-			this.croppingOptionComboBox.Location = new System.Drawing.Point(9, 92);
-			this.croppingOptionComboBox.Name = "croppingOptionComboBox";
-			this.croppingOptionComboBox.Size = new System.Drawing.Size(140, 21);
-			this.croppingOptionComboBox.TabIndex = 7;
+			this.mCroppingOptionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.mCroppingOptionComboBox.Location = new System.Drawing.Point(8, 92);
+			this.mCroppingOptionComboBox.Name = "mCroppingOptionComboBox";
+			this.mCroppingOptionComboBox.Size = new System.Drawing.Size(140, 21);
+			this.mCroppingOptionComboBox.TabIndex = 7;
+			this.mCroppingOptionComboBox.SelectedIndexChanged += new System.EventHandler(this.CroppingOptionComboBox_SelectedIndexChanged);
 			// 
-			// widthLabel
+			// mWidthLabel
 			// 
-			this.widthLabel.AutoSize = true;
-			this.widthLabel.Location = new System.Drawing.Point(6, 23);
-			this.widthLabel.Name = "widthLabel";
-			this.widthLabel.Size = new System.Drawing.Size(35, 13);
-			this.widthLabel.TabIndex = 4;
-			this.widthLabel.Text = "Width";
+			this.mWidthLabel.AutoSize = true;
+			this.mWidthLabel.Location = new System.Drawing.Point(6, 23);
+			this.mWidthLabel.Name = "mWidthLabel";
+			this.mWidthLabel.Size = new System.Drawing.Size(35, 13);
+			this.mWidthLabel.TabIndex = 4;
+			this.mWidthLabel.Text = "Width";
 			// 
-			// heightLabel
+			// mHeightLabel
 			// 
-			this.heightLabel.AutoSize = true;
-			this.heightLabel.Location = new System.Drawing.Point(6, 49);
-			this.heightLabel.Name = "heightLabel";
-			this.heightLabel.Size = new System.Drawing.Size(38, 13);
-			this.heightLabel.TabIndex = 5;
-			this.heightLabel.Text = "Height";
+			this.mHeightLabel.AutoSize = true;
+			this.mHeightLabel.Location = new System.Drawing.Point(6, 49);
+			this.mHeightLabel.Name = "mHeightLabel";
+			this.mHeightLabel.Size = new System.Drawing.Size(38, 13);
+			this.mHeightLabel.TabIndex = 5;
+			this.mHeightLabel.Text = "Height";
 			// 
-			// widthTextBox
+			// mWidthTextBox
 			// 
-			this.widthTextBox.Location = new System.Drawing.Point(49, 20);
-			this.widthTextBox.Name = "widthTextBox";
-			this.widthTextBox.Size = new System.Drawing.Size(100, 20);
-			this.widthTextBox.TabIndex = 2;
+			this.mWidthTextBox.Location = new System.Drawing.Point(49, 20);
+			this.mWidthTextBox.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+			this.mWidthTextBox.Name = "mWidthTextBox";
+			this.mWidthTextBox.Size = new System.Drawing.Size(99, 20);
+			this.mWidthTextBox.TabIndex = 2;
 			// 
-			// heightTextBox
+			// mHeightTextBox
 			// 
-			this.heightTextBox.Location = new System.Drawing.Point(49, 46);
-			this.heightTextBox.Name = "heightTextBox";
-			this.heightTextBox.Size = new System.Drawing.Size(100, 20);
-			this.heightTextBox.TabIndex = 3;
+			this.mHeightTextBox.Location = new System.Drawing.Point(49, 46);
+			this.mHeightTextBox.Name = "mHeightTextBox";
+			this.mHeightTextBox.Size = new System.Drawing.Size(99, 20);
+			this.mHeightTextBox.TabIndex = 3;
 			// 
-			// actionsGroupBox
+			// mActionsGroupBox
 			// 
-			this.actionsGroupBox.Controls.Add(this.flowLayoutPanel1);
-			this.actionsGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.actionsGroupBox.Location = new System.Drawing.Point(3, 3);
-			this.actionsGroupBox.Name = "actionsGroupBox";
-			this.actionsGroupBox.Size = new System.Drawing.Size(159, 178);
-			this.actionsGroupBox.TabIndex = 8;
-			this.actionsGroupBox.TabStop = false;
-			this.actionsGroupBox.Text = "Actions";
+			this.mActionsGroupBox.Controls.Add(this.mFlowLayoutPanel);
+			this.mActionsGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.mActionsGroupBox.Location = new System.Drawing.Point(3, 3);
+			this.mActionsGroupBox.Name = "mActionsGroupBox";
+			this.mActionsGroupBox.Size = new System.Drawing.Size(159, 178);
+			this.mActionsGroupBox.TabIndex = 8;
+			this.mActionsGroupBox.TabStop = false;
+			this.mActionsGroupBox.Text = "Actions";
 			// 
-			// flowLayoutPanel1
+			// mFlowLayoutPanel
 			// 
-			this.flowLayoutPanel1.Controls.Add(this.openPictureButton);
-			this.flowLayoutPanel1.Controls.Add(this.closePictureButton);
-			this.flowLayoutPanel1.Controls.Add(this.savePictureButton);
-			this.flowLayoutPanel1.Controls.Add(this.setWallpaperButton);
-			this.flowLayoutPanel1.Location = new System.Drawing.Point(5, 15);
-			this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(9, 12, 3, 3);
-			this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-			this.flowLayoutPanel1.Size = new System.Drawing.Size(149, 158);
-			this.flowLayoutPanel1.TabIndex = 10;
+			this.mFlowLayoutPanel.Controls.Add(this.mOpenPictureButton);
+			this.mFlowLayoutPanel.Controls.Add(this.mClosePictureButton);
+			this.mFlowLayoutPanel.Controls.Add(this.mSavePictureButton);
+			this.mFlowLayoutPanel.Controls.Add(this.mSetWallpaperButton);
+			this.mFlowLayoutPanel.Location = new System.Drawing.Point(5, 15);
+			this.mFlowLayoutPanel.Margin = new System.Windows.Forms.Padding(9, 12, 3, 3);
+			this.mFlowLayoutPanel.Name = "mFlowLayoutPanel";
+			this.mFlowLayoutPanel.Size = new System.Drawing.Size(149, 158);
+			this.mFlowLayoutPanel.TabIndex = 10;
 			// 
-			// openPictureButton
+			// mOpenPictureButton
 			// 
-			this.openPictureButton.AutoSize = true;
-			this.openPictureButton.Image = global::WindowsApplication1.Properties.Resources.Open;
-			this.openPictureButton.Location = new System.Drawing.Point(3, 3);
-			this.openPictureButton.Name = "openPictureButton";
-			this.openPictureButton.Size = new System.Drawing.Size(140, 34);
-			this.openPictureButton.TabIndex = 7;
-			this.openPictureButton.Text = "Open Picture";
-			this.openPictureButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-			this.openPictureButton.UseVisualStyleBackColor = true;
-			this.openPictureButton.Click += new System.EventHandler(this.openPictureButton_Click);
+			this.mOpenPictureButton.AutoSize = true;
+			this.mOpenPictureButton.Image = global::WindowsApplication1.Properties.Resources.Open;
+			this.mOpenPictureButton.Location = new System.Drawing.Point(3, 3);
+			this.mOpenPictureButton.Name = "mOpenPictureButton";
+			this.mOpenPictureButton.Size = new System.Drawing.Size(140, 34);
+			this.mOpenPictureButton.TabIndex = 7;
+			this.mOpenPictureButton.Text = "Open Picture";
+			this.mOpenPictureButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+			this.mOpenPictureButton.UseVisualStyleBackColor = true;
+			this.mOpenPictureButton.Click += new System.EventHandler(this.OpenPictureButton_Click);
 			// 
-			// closePictureButton
+			// mClosePictureButton
 			// 
-			this.closePictureButton.AutoSize = true;
-			this.closePictureButton.Image = global::WindowsApplication1.Properties.Resources.Close;
-			this.closePictureButton.Location = new System.Drawing.Point(3, 43);
-			this.closePictureButton.Name = "closePictureButton";
-			this.closePictureButton.Size = new System.Drawing.Size(140, 34);
-			this.closePictureButton.TabIndex = 10;
-			this.closePictureButton.Text = "Close Picture";
-			this.closePictureButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-			this.closePictureButton.UseVisualStyleBackColor = true;
-			this.closePictureButton.Click += new System.EventHandler(this.closePictureButton_Click);
+			this.mClosePictureButton.AutoSize = true;
+			this.mClosePictureButton.Image = global::WindowsApplication1.Properties.Resources.Close;
+			this.mClosePictureButton.Location = new System.Drawing.Point(3, 43);
+			this.mClosePictureButton.Name = "mClosePictureButton";
+			this.mClosePictureButton.Size = new System.Drawing.Size(140, 34);
+			this.mClosePictureButton.TabIndex = 10;
+			this.mClosePictureButton.Text = "Close Picture";
+			this.mClosePictureButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+			this.mClosePictureButton.UseVisualStyleBackColor = true;
+			this.mClosePictureButton.Click += new System.EventHandler(this.ClosePictureButton_Click);
 			// 
-			// savePictureButton
+			// mSavePictureButton
 			// 
-			this.savePictureButton.Image = global::WindowsApplication1.Properties.Resources.Save;
-			this.savePictureButton.Location = new System.Drawing.Point(3, 83);
-			this.savePictureButton.Name = "savePictureButton";
-			this.savePictureButton.Size = new System.Drawing.Size(140, 34);
-			this.savePictureButton.TabIndex = 8;
-			this.savePictureButton.Text = "Save Picture";
-			this.savePictureButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-			this.savePictureButton.UseVisualStyleBackColor = true;
-			this.savePictureButton.Click += new System.EventHandler(this.savePictureButton_Click);
+			this.mSavePictureButton.Image = global::WindowsApplication1.Properties.Resources.Save;
+			this.mSavePictureButton.Location = new System.Drawing.Point(3, 83);
+			this.mSavePictureButton.Name = "mSavePictureButton";
+			this.mSavePictureButton.Size = new System.Drawing.Size(140, 34);
+			this.mSavePictureButton.TabIndex = 8;
+			this.mSavePictureButton.Text = "Save Picture";
+			this.mSavePictureButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+			this.mSavePictureButton.UseVisualStyleBackColor = true;
+			this.mSavePictureButton.Click += new System.EventHandler(this.SavePictureButton_Click);
 			// 
-			// setWallpaperButton
+			// mSetWallpaperButton
 			// 
-			this.setWallpaperButton.Image = global::WindowsApplication1.Properties.Resources.SetWallpaper;
-			this.setWallpaperButton.Location = new System.Drawing.Point(3, 123);
-			this.setWallpaperButton.Name = "setWallpaperButton";
-			this.setWallpaperButton.Size = new System.Drawing.Size(140, 34);
-			this.setWallpaperButton.TabIndex = 9;
-			this.setWallpaperButton.Text = "Set As Wallpaper";
-			this.setWallpaperButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-			this.setWallpaperButton.UseVisualStyleBackColor = true;
-			this.setWallpaperButton.Click += new System.EventHandler(this.setAsWallpaperButton_Click);
+			this.mSetWallpaperButton.Image = global::WindowsApplication1.Properties.Resources.SetWallpaper;
+			this.mSetWallpaperButton.Location = new System.Drawing.Point(3, 123);
+			this.mSetWallpaperButton.Name = "mSetWallpaperButton";
+			this.mSetWallpaperButton.Size = new System.Drawing.Size(140, 34);
+			this.mSetWallpaperButton.TabIndex = 9;
+			this.mSetWallpaperButton.Text = "Set As Wallpaper";
+			this.mSetWallpaperButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+			this.mSetWallpaperButton.UseVisualStyleBackColor = true;
+			this.mSetWallpaperButton.Click += new System.EventHandler(this.SetAsWallpaperButton_Click);
 			// 
-			// menuStrip1
+			// mMenuStrip
 			// 
-			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.extrasToolStripMenuItem,
-            this.helpToolStripMenuItem});
-			this.menuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
-			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Size = new System.Drawing.Size(552, 24);
-			this.menuStrip1.TabIndex = 9;
-			this.menuStrip1.Text = "menuStrip1";
+			this.mMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mFileToolStripMenuItem,
+            this.mExtrasToolStripMenuItem,
+            this.mHelpToolStripMenuItem});
+			this.mMenuStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
+			this.mMenuStrip.Location = new System.Drawing.Point(0, 0);
+			this.mMenuStrip.Name = "mMenuStrip";
+			this.mMenuStrip.Size = new System.Drawing.Size(552, 24);
+			this.mMenuStrip.TabIndex = 9;
+			this.mMenuStrip.Text = "menuStrip1";
 			// 
-			// fileToolStripMenuItem
+			// mFileToolStripMenuItem
 			// 
-			this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.openToolStripMenuItem,
-            this.closeToolStripMenuItem,
-            this.saveAsToolStripMenuItem,
-            this.setAsWallpaperToolStripMenuItem,
-            this.exitToolStripMenuItem});
-			this.fileToolStripMenuItem.Image = global::WindowsApplication1.Properties.Resources.File;
-			this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-			this.fileToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
-			this.fileToolStripMenuItem.Text = "File";
+			this.mFileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mOpenToolStripMenuItem,
+            this.mCloseToolStripMenuItem,
+            this.mSaveAsToolStripMenuItem,
+            this.mSetAsWallpaperToolStripMenuItem,
+            this.mExitToolStripMenuItem});
+			this.mFileToolStripMenuItem.Image = global::WindowsApplication1.Properties.Resources.File;
+			this.mFileToolStripMenuItem.Name = "mFileToolStripMenuItem";
+			this.mFileToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
+			this.mFileToolStripMenuItem.Text = "File";
 			// 
-			// openToolStripMenuItem
+			// mOpenToolStripMenuItem
 			// 
-			this.openToolStripMenuItem.Image = global::WindowsApplication1.Properties.Resources.Open;
-			this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-			this.openToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
-			this.openToolStripMenuItem.Text = "Open";
-			this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
+			this.mOpenToolStripMenuItem.Image = global::WindowsApplication1.Properties.Resources.Open;
+			this.mOpenToolStripMenuItem.Name = "mOpenToolStripMenuItem";
+			this.mOpenToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+			this.mOpenToolStripMenuItem.Text = "Open";
+			this.mOpenToolStripMenuItem.Click += new System.EventHandler(this.OpenToolStripMenuItem_Click);
 			// 
-			// closeToolStripMenuItem
+			// mCloseToolStripMenuItem
 			// 
-			this.closeToolStripMenuItem.Image = global::WindowsApplication1.Properties.Resources.Close;
-			this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-			this.closeToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
-			this.closeToolStripMenuItem.Text = "Close";
-			this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
+			this.mCloseToolStripMenuItem.Image = global::WindowsApplication1.Properties.Resources.Close;
+			this.mCloseToolStripMenuItem.Name = "mCloseToolStripMenuItem";
+			this.mCloseToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+			this.mCloseToolStripMenuItem.Text = "Close";
+			this.mCloseToolStripMenuItem.Click += new System.EventHandler(this.CloseToolStripMenuItem_Click);
 			// 
-			// saveAsToolStripMenuItem
+			// mSaveAsToolStripMenuItem
 			// 
-			this.saveAsToolStripMenuItem.Image = global::WindowsApplication1.Properties.Resources.Save;
-			this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-			this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
-			this.saveAsToolStripMenuItem.Text = "Save As...";
-			this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
+			this.mSaveAsToolStripMenuItem.Image = global::WindowsApplication1.Properties.Resources.Save;
+			this.mSaveAsToolStripMenuItem.Name = "mSaveAsToolStripMenuItem";
+			this.mSaveAsToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+			this.mSaveAsToolStripMenuItem.Text = "Save As...";
+			this.mSaveAsToolStripMenuItem.Click += new System.EventHandler(this.SaveAsToolStripMenuItem_Click);
 			// 
-			// setAsWallpaperToolStripMenuItem
+			// mSetAsWallpaperToolStripMenuItem
 			// 
-			this.setAsWallpaperToolStripMenuItem.Image = global::WindowsApplication1.Properties.Resources.SetWallpaper;
-			this.setAsWallpaperToolStripMenuItem.Name = "setAsWallpaperToolStripMenuItem";
-			this.setAsWallpaperToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
-			this.setAsWallpaperToolStripMenuItem.Text = "Set As Wallpaper";
-			this.setAsWallpaperToolStripMenuItem.Click += new System.EventHandler(this.setAsWallpaperToolStripMenuItem_Click);
+			this.mSetAsWallpaperToolStripMenuItem.Image = global::WindowsApplication1.Properties.Resources.SetWallpaper;
+			this.mSetAsWallpaperToolStripMenuItem.Name = "mSetAsWallpaperToolStripMenuItem";
+			this.mSetAsWallpaperToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+			this.mSetAsWallpaperToolStripMenuItem.Text = "Set As Wallpaper";
+			this.mSetAsWallpaperToolStripMenuItem.Click += new System.EventHandler(this.SetAsWallpaperToolStripMenuItem_Click);
 			// 
-			// extrasToolStripMenuItem
+			// mExitToolStripMenuItem
 			// 
-			this.extrasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.jordanDunkToolStripMenuItem});
-			this.extrasToolStripMenuItem.Image = global::WindowsApplication1.Properties.Resources.Extras;
-			this.extrasToolStripMenuItem.Name = "extrasToolStripMenuItem";
-			this.extrasToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
-			this.extrasToolStripMenuItem.Text = "Extras";
+			this.mExitToolStripMenuItem.Name = "mExitToolStripMenuItem";
+			this.mExitToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+			this.mExitToolStripMenuItem.Text = "Exit";
+			this.mExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
 			// 
-			// jordanDunkToolStripMenuItem
+			// mExtrasToolStripMenuItem
 			// 
-			this.jordanDunkToolStripMenuItem.CheckOnClick = true;
-			this.jordanDunkToolStripMenuItem.Image = global::WindowsApplication1.Properties.Resources.Watch;
-			this.jordanDunkToolStripMenuItem.Name = "jordanDunkToolStripMenuItem";
-			this.jordanDunkToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
-			this.jordanDunkToolStripMenuItem.Text = "Watch Jordan Dunk";
-			this.jordanDunkToolStripMenuItem.Click += new System.EventHandler(this.jordanDunkToolStripMenuItem_Click);
+			this.mExtrasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mJordanDunkToolStripMenuItem});
+			this.mExtrasToolStripMenuItem.Image = global::WindowsApplication1.Properties.Resources.Extras;
+			this.mExtrasToolStripMenuItem.Name = "mExtrasToolStripMenuItem";
+			this.mExtrasToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
+			this.mExtrasToolStripMenuItem.Text = "Extras";
 			// 
-			// helpToolStripMenuItem
+			// mJordanDunkToolStripMenuItem
 			// 
-			this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutToolStripMenuItem});
-			this.helpToolStripMenuItem.Image = global::WindowsApplication1.Properties.Resources.Help;
-			this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-			this.helpToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
-			this.helpToolStripMenuItem.Text = "Help";
+			this.mJordanDunkToolStripMenuItem.Image = global::WindowsApplication1.Properties.Resources.Watch;
+			this.mJordanDunkToolStripMenuItem.Name = "mJordanDunkToolStripMenuItem";
+			this.mJordanDunkToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+			this.mJordanDunkToolStripMenuItem.Text = "Watch Jordan Dunk";
+			this.mJordanDunkToolStripMenuItem.Click += new System.EventHandler(this.JordanDunkToolStripMenuItem_Click);
 			// 
-			// aboutToolStripMenuItem
+			// mHelpToolStripMenuItem
 			// 
-			this.aboutToolStripMenuItem.Image = global::WindowsApplication1.Properties.Resources.About;
-			this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-			this.aboutToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
-			this.aboutToolStripMenuItem.Text = "About";
-			this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+			this.mHelpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mAboutToolStripMenuItem});
+			this.mHelpToolStripMenuItem.Image = global::WindowsApplication1.Properties.Resources.Help;
+			this.mHelpToolStripMenuItem.Name = "mHelpToolStripMenuItem";
+			this.mHelpToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
+			this.mHelpToolStripMenuItem.Text = "Help";
 			// 
-			// exitToolStripMenuItem
+			// mAboutToolStripMenuItem
 			// 
-			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-			this.exitToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
-			this.exitToolStripMenuItem.Text = "Exit";
-			this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+			this.mAboutToolStripMenuItem.Image = global::WindowsApplication1.Properties.Resources.About;
+			this.mAboutToolStripMenuItem.Name = "mAboutToolStripMenuItem";
+			this.mAboutToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+			this.mAboutToolStripMenuItem.Text = "About";
+			this.mAboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
+			// 
+			// mTimer
+			// 
+			this.mTimer.Interval = 40;
+			this.mTimer.Tick += new System.EventHandler(this.Timer_Tick);
 			// 
 			// Main
 			// 
@@ -355,26 +369,28 @@ namespace WindowsApplication1
 			this.AutoSize = true;
 			this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.ClientSize = new System.Drawing.Size(552, 336);
-			this.Controls.Add(this.tableLayoutPanel1);
-			this.Controls.Add(this.menuStrip1);
+			this.Controls.Add(this.mTableLayoutPanel);
+			this.Controls.Add(this.mMenuStrip);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.MainMenuStrip = this.menuStrip1;
+			this.MainMenuStrip = this.mMenuStrip;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "Main";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Scott\'s Cool Wallpaper Maker";
-			this.previewGroupBox.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.picturePreview)).EndInit();
-			this.tableLayoutPanel1.ResumeLayout(false);
-			this.optionsGroupBox.ResumeLayout(false);
-			this.optionsGroupBox.PerformLayout();
-			this.actionsGroupBox.ResumeLayout(false);
-			this.flowLayoutPanel1.ResumeLayout(false);
-			this.flowLayoutPanel1.PerformLayout();
-			this.menuStrip1.ResumeLayout(false);
-			this.menuStrip1.PerformLayout();
+			this.mPreviewGroupBox.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.mPicturePreviewBox)).EndInit();
+			this.mTableLayoutPanel.ResumeLayout(false);
+			this.mOptionsGroupBox.ResumeLayout(false);
+			this.mOptionsGroupBox.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.mWidthTextBox)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.mHeightTextBox)).EndInit();
+			this.mActionsGroupBox.ResumeLayout(false);
+			this.mFlowLayoutPanel.ResumeLayout(false);
+			this.mFlowLayoutPanel.PerformLayout();
+			this.mMenuStrip.ResumeLayout(false);
+			this.mMenuStrip.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -382,33 +398,34 @@ namespace WindowsApplication1
 
         #endregion
 
-		private System.Windows.Forms.GroupBox previewGroupBox;
-		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-		private System.Windows.Forms.MenuStrip menuStrip1;
-		private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem extrasToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem jordanDunkToolStripMenuItem;
-		private System.Windows.Forms.GroupBox actionsGroupBox;
-		private System.Windows.Forms.PictureBox picturePreview;
-		private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-		private System.Windows.Forms.Button openPictureButton;
-		private System.Windows.Forms.Button closePictureButton;
-		private System.Windows.Forms.Button savePictureButton;
-		private System.Windows.Forms.Button setWallpaperButton;
-		private System.Windows.Forms.GroupBox optionsGroupBox;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.ComboBox croppingOptionComboBox;
-		private System.Windows.Forms.Label widthLabel;
-		private System.Windows.Forms.Label heightLabel;
-		private System.Windows.Forms.TextBox widthTextBox;
-		private System.Windows.Forms.TextBox heightTextBox;
-		private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem setAsWallpaperToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+		private System.Windows.Forms.GroupBox mPreviewGroupBox;
+		private System.Windows.Forms.TableLayoutPanel mTableLayoutPanel;
+		private System.Windows.Forms.MenuStrip mMenuStrip;
+		private System.Windows.Forms.ToolStripMenuItem mFileToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem mExtrasToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem mHelpToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem mAboutToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem mJordanDunkToolStripMenuItem;
+		private System.Windows.Forms.GroupBox mActionsGroupBox;
+		private System.Windows.Forms.PictureBox mPicturePreviewBox;
+		private System.Windows.Forms.FlowLayoutPanel mFlowLayoutPanel;
+		private System.Windows.Forms.Button mOpenPictureButton;
+		private System.Windows.Forms.Button mClosePictureButton;
+		private System.Windows.Forms.Button mSavePictureButton;
+		private System.Windows.Forms.Button mSetWallpaperButton;
+		private System.Windows.Forms.GroupBox mOptionsGroupBox;
+		private System.Windows.Forms.Label mCroppingOptionLabel;
+		private System.Windows.Forms.ComboBox mCroppingOptionComboBox;
+		private System.Windows.Forms.Label mWidthLabel;
+		private System.Windows.Forms.Label mHeightLabel;
+		private WindowsApplication1.UInt32NumericUpDown mWidthTextBox;
+		private WindowsApplication1.UInt32NumericUpDown mHeightTextBox;
+		private System.Windows.Forms.ToolStripMenuItem mOpenToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem mCloseToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem mSaveAsToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem mSetAsWallpaperToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem mExitToolStripMenuItem;
+		private System.Windows.Forms.Timer mTimer;
     }
 }
 
