@@ -28,6 +28,10 @@ namespace WindowsApplication1
 
 		#region Fields
 
+		private Size mCropSize;
+
+		private bool mIsPreviewBoxUpdating;
+
 		private int mJordanDunkIndex;
 
 		private Image[] mJordanDunks = new Image[mJordanDunkStopIndex - mJordanDunkStartIndex];
@@ -36,22 +40,13 @@ namespace WindowsApplication1
 
 		private const int mJordanDunkStopIndex = 1832;
 
-		private Image mModifiedPicture;
+		private Image mModifiedImage;
 
-		private Image mOpenedPicture;
+		private Image mOpenImage;
 
 		#endregion Fields
 
 		#region Methods
-
-		public Main()
-		{
-			InitializeComponent();
-			mHeightTextBox.Text = SystemInformation.PrimaryMonitorSize.Height.ToString();
-			mWidthTextBox.Text = SystemInformation.PrimaryMonitorSize.Width.ToString();
-			DisableControls();
-			PopulateJordanDunks();
-		}
 
 		private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
 		{
@@ -79,41 +74,50 @@ namespace WindowsApplication1
 			return returnString;
 		}
 
-		private void ClosePictureButton_Click(object sender, EventArgs e)
+		private void ClosePicture()
 		{
 			DisableControls();
 			mPicturePreviewBox.Image = null;
+			mOpenImage = null;
 		}
 
-		private void CloseToolStripMenuItem_Click(object sender, EventArgs e)
+		private void ClosePictureButton_Click(object sender, EventArgs e)
 		{
-			DisableControls();
-			mPicturePreviewBox.Image = null;
+			ClosePicture();
+		}
+
+		private void ClosePictureToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			ClosePicture();
 		}
 
 		private void CroppingOptionComboBox_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			Size newSize = new Size(Convert.ToInt32(mWidthTextBox.Text), Convert.ToInt32(mHeightTextBox.Text));
+			UpdatePreviewBox();
+		}
 
-			// crop and scale the image
-			if(newSize.Height > newSize.Width)
-			{
-				mModifiedPicture = ImageEditing.ResizeImage
-				(
-					mOpenedPicture,
-					newSize,
-					(VerticalCropping)Enum.Parse(typeof(VerticalCropping), mCroppingOptionComboBox.Text)
-				);
-			}
-			else
-			{
-				mModifiedPicture = ImageEditing.ResizeImage
-				(
-					mOpenedPicture,
-					newSize,
-					(HoriztonalCropping)Enum.Parse(typeof(HoriztonalCropping), mCroppingOptionComboBox.Text)
-				);
-			}
+		private void CropSizeTextBox_ValueChanged(object sender, EventArgs e)
+		{
+			mCropSize = new Size(Convert.ToInt32(mWidthTextBox.Text), Convert.ToInt32(mHeightTextBox.Text));
+
+			UpdatePreviewBox();
+		}
+
+		private void DisableControls()
+		{
+			mOpenPictureButton.Focus();
+
+			mHeightTextBox.ReadOnly = true;
+			mWidthTextBox.ReadOnly = true;
+			mClosePictureButton.Enabled = false;
+			mSavePictureButton.Enabled = false;
+			mSetWallpaperButton.Enabled = false;
+			mCroppingOptionComboBox.Enabled = false;
+			mWidthTextBox.Enabled = false;
+			mHeightTextBox.Enabled = false;
+			mClosePictureToolStripMenuItem.Enabled = false;
+			mSavePictureToolStripMenuItem.Enabled = false;
+			mSetAsWallpaperToolStripMenuItem.Enabled = false;
 		}
 
 		private void EnableControls()
@@ -124,8 +128,10 @@ namespace WindowsApplication1
 			mSavePictureButton.Enabled = true;
 			mSetWallpaperButton.Enabled = true;
 			mCroppingOptionComboBox.Enabled = true;
-			mCloseToolStripMenuItem.Enabled = true;
-			mSaveAsToolStripMenuItem.Enabled = true;
+			mWidthTextBox.Enabled = true;
+			mHeightTextBox.Enabled = true;
+			mClosePictureToolStripMenuItem.Enabled = true;
+			mSavePictureToolStripMenuItem.Enabled = true;
 			mSetAsWallpaperToolStripMenuItem.Enabled = true;
 		}
 
@@ -139,19 +145,121 @@ namespace WindowsApplication1
 			this.Close();
 		}
 
-		private void DisableControls()
+		private static Rectangle GetImageCropRectangle(Size imgSize, Size cropSize, HoriztonalCropping horizontalCropOption)
 		{
-			mOpenPictureButton.Focus();
+			int x;
+			int y;
 
-			mHeightTextBox.ReadOnly = true;
-			mWidthTextBox.ReadOnly = true;
-			mClosePictureButton.Enabled = false;
-			mSavePictureButton.Enabled = false;
-			mSetWallpaperButton.Enabled = false;
-			mCroppingOptionComboBox.Enabled = false;
-			mCloseToolStripMenuItem.Enabled = false;
-			mSaveAsToolStripMenuItem.Enabled = false;
-			mSetAsWallpaperToolStripMenuItem.Enabled = false;
+			if(imgSize.Height != cropSize.Height)
+			{
+				throw new ArgumentException(string.Format
+				(
+					"For a horizontal crop, current height ({0}) must match desired cropped height ({1}).",
+					imgSize.Height,
+					cropSize.Height
+				));
+			}
+			else if(imgSize.Width < cropSize.Width)
+			{
+				throw new ArgumentException(string.Format
+				(
+					"For a horizontal crop, current width ({0}) must be greater than desired cropped width ({1}).",
+					imgSize.Width,
+					cropSize.Width
+				));
+			}
+
+			switch(horizontalCropOption)
+			{
+				case HoriztonalCropping.Left:
+					x = 0;
+					y = 0;
+					break;
+				case HoriztonalCropping.Right:
+					x = imgSize.Width - cropSize.Width;
+					y = 0;
+					break;
+				default: // HoriztonalCropping.Center
+					x = (imgSize.Width - cropSize.Width) / 2;
+					y = 0;
+					break;
+			}
+
+			return new Rectangle(x, y, cropSize.Width, cropSize.Height);
+		}
+
+		private static Rectangle GetImageCropRectangle(Size imgSize, Size cropSize, VerticalCropping verticalCropOption)
+		{
+			int x;
+			int y;
+
+			if(imgSize.Width != cropSize.Width)
+			{
+				throw new ArgumentException(string.Format
+				(
+					"For a vertical crop, current width ({0}) must match desired cropped width ({1}).",
+					imgSize.Width,
+					cropSize.Width
+				));
+			}
+			else if(imgSize.Height < cropSize.Height)
+			{
+				throw new ArgumentException(string.Format
+				(
+					"For a vertical crop, current height ({0}) must be greater than desired cropped height ({1}).",
+					imgSize.Height,
+					cropSize.Height
+				));
+			}
+
+			switch(verticalCropOption)
+			{
+				case VerticalCropping.Top:
+					x = 0;
+					y = 0;
+					break;
+				case VerticalCropping.Bottom:
+					x = 0;
+					y = imgSize.Height - cropSize.Height;
+					break;
+				default: // VerticalCropping.Center:
+					x = 0;
+					y = (imgSize.Height - cropSize.Height) / 2;
+					break;
+			}
+
+			return new Rectangle(x, y, cropSize.Width, cropSize.Height);
+		}
+
+		private static Size GetImageScaleSize(Size imgSize, Size croppedSize)
+		{
+			int sourceWidth = imgSize.Width;
+			int sourceHeight = imgSize.Height;
+
+			float nPercent = 0;
+			float nPercentW = 0;
+			float nPercentH = 0;
+
+			nPercentW = ((float)croppedSize.Width / (float)sourceWidth);
+			nPercentH = ((float)croppedSize.Height / (float)sourceHeight);
+
+			int destWidth;
+			int destHeight;
+
+			if(nPercentH > nPercentW)
+			{
+				nPercent = nPercentH;
+				destHeight = croppedSize.Height;
+				destWidth = (int)(sourceWidth * nPercent);
+			}
+			else
+			{
+				nPercent = nPercentW;
+				destHeight = (int)(sourceHeight * nPercent);
+				destWidth = croppedSize.Width;
+			}
+
+			return new Size(destWidth, destHeight);
 		}
 
 		private void JordanDunkToolStripMenuItem_Click(object sender, EventArgs e)
@@ -166,12 +274,19 @@ namespace WindowsApplication1
 			}
 		}
 
-		private void OpenPictureButton_Click(object sender, EventArgs e)
+		public Main()
 		{
-			OpenPictureForEditing();
+			InitializeComponent();
+			DisableControls();
+			PopulateJordanDunks();
+			mCropSize = new Size(SystemInformation.PrimaryMonitorSize.Width, SystemInformation.PrimaryMonitorSize.Height);
+			mWidthTextBox.Text = mCropSize.Width.ToString();
+			mHeightTextBox.Text = mCropSize.Height.ToString();
+			mHeightTextBox.ValueChanged += CropSizeTextBox_ValueChanged;
+			mWidthTextBox.ValueChanged += CropSizeTextBox_ValueChanged;
 		}
 
-		private void OpenPictureForEditing()
+		private void OpenPicture()
 		{
 			OpenFileDialog openPictureDialog = new OpenFileDialog();
 			openPictureDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
@@ -182,33 +297,24 @@ namespace WindowsApplication1
 			if(openPictureDialog.ShowDialog() == DialogResult.OK)
 			{
 				EnableControls();
-				mJordanDunkToolStripMenuItem.Checked = false;
 
 				FileInfo fileInfo = new FileInfo(openPictureDialog.FileName);
-				mSaveAsToolStripMenuItem.Text = "Save " + fileInfo.Name + " as...";
-				mOpenedPicture = Image.FromFile(openPictureDialog.FileName);
-				mOpenedPicture.Tag = fileInfo; // want to remember where it was located and what it's name is.
+				mSavePictureToolStripMenuItem.Text = "Save " + fileInfo.Name + " as...";
+				mOpenImage = Image.FromFile(openPictureDialog.FileName);
+				mOpenImage.Tag = fileInfo; // want to remember where it was located and what it's name is.
 
-				SetPictureBoxWidth(mOpenedPicture);
-
-				if(mPreviewGroupBox.Height > mPreviewGroupBox.Width)
-				{
-					mCroppingOptionComboBox.DataSource = Enum.GetValues(typeof(VerticalCropping));
-					mCroppingOptionComboBox.Text = Enum.GetName(typeof(VerticalCropping), VerticalCropping.Center);
-				}
-				else
-				{
-					mCroppingOptionComboBox.DataSource = Enum.GetValues(typeof(HoriztonalCropping));
-					mCroppingOptionComboBox.Text = Enum.GetName(typeof(HoriztonalCropping), HoriztonalCropping.Center);
-				}
-
-				mPicturePreviewBox.Image = mModifiedPicture;
+				UpdatePreviewBox();
 			}
 		}
 
-		private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
+		private void OpenPictureButton_Click(object sender, EventArgs e)
 		{
-			OpenPictureForEditing();
+			OpenPicture();
+		}
+
+		private void OpenPictureToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			OpenPicture();
 		}
 
 		private void PopulateJordanDunks()
@@ -217,11 +323,6 @@ namespace WindowsApplication1
 			{
 				mJordanDunks[i - mJordanDunkStartIndex] = (Bitmap)(JordanDunk.ResourceManager.GetObject("dunks" + i));
 			}
-		}
-
-		private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			SavePicture();
 		}
 
 		private void SavePicture()
@@ -235,9 +336,9 @@ namespace WindowsApplication1
 			// remove the extension from the name and add the new dimensions to the new name.
 			saveDialog.FileName = BuildFileName
 			(
-				((FileInfo)mOpenedPicture.Tag).Name,
-				((FileInfo)mOpenedPicture.Tag).Extension,
-				"_" + mModifiedPicture.Width + "x" + mModifiedPicture.Height
+				((FileInfo)mOpenImage.Tag).Name,
+				((FileInfo)mOpenImage.Tag).Extension,
+				"_" + mModifiedImage.Width + "x" + mModifiedImage.Height
 			);
 
 			if(saveDialog.ShowDialog() == DialogResult.OK)
@@ -251,14 +352,24 @@ namespace WindowsApplication1
 			SavePicture();
 		}
 
-		private void SetAsWallpaperButton_Click(object sender, EventArgs e)
+		private void SavePictureToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			SavePicture();
+		}
+
+		private void SetAsWallpaper()
 		{
 
 		}
 
+		private void SetAsWallpaperButton_Click(object sender, EventArgs e)
+		{
+			SetAsWallpaper();
+		}
+
 		private void SetAsWallpaperToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-
+			SetAsWallpaper();
 		}
 
 		private void SetPictureBoxWidth(Image currentImage)
@@ -267,16 +378,17 @@ namespace WindowsApplication1
 			int width = currentImage.Width;
 
 			mPreviewGroupBox.Width = width * mPicturePreviewBox.Height / height + mPreviewGroupBox.Margin.Horizontal;
+			//mPicturePreviewBox.Width = width * mPicturePreviewBox.Height / height;
 		}
 
 		private void StartJordanDunkClip()
 		{
-			if(mOpenedPicture != null)
+			if(mOpenImage != null)
 			{
 				DisableControls();
 			}
 			mPicturePreviewBox.Focus();
-			mOpenToolStripMenuItem.Enabled = false;
+			mOpenPictureToolStripMenuItem.Enabled = false;
 			mOpenPictureButton.Enabled = false;
 
 			// play the clip
@@ -295,16 +407,16 @@ namespace WindowsApplication1
 				mTimer.Stop();
 			}
 
-			if(mOpenedPicture != null)
+			if(mOpenImage != null)
 			{
-				SetPictureBoxWidth(mOpenedPicture);
+				SetPictureBoxWidth(mModifiedImage);
 				EnableControls();
 			}
-			mOpenToolStripMenuItem.Enabled = true;
+			mOpenPictureToolStripMenuItem.Enabled = true;
 			mOpenPictureButton.Enabled = true;
 			mOpenPictureButton.Focus();
 
-			mPicturePreviewBox.Image = mModifiedPicture;
+			mPicturePreviewBox.Image = mModifiedImage;
 			mJordanDunkToolStripMenuItem.Text = "Watch Jordan Dunk";
 		}
 
@@ -316,6 +428,62 @@ namespace WindowsApplication1
 				StopJordanDunkClip();
 		}
 
+		private void UpdatePreviewBox()
+		{
+			// Prevent recurrency. This method is called from the selected cropping changed handler, which can be raised below.
+			if(mIsPreviewBoxUpdating)
+				return;
+
+			mIsPreviewBoxUpdating = true;
+			Size scaleSize = GetImageScaleSize(mOpenImage.Size, mCropSize);
+			Rectangle cropArea = Rectangle.Empty;
+
+			if(scaleSize.Width > mCropSize.Width)
+			{
+				// Is this first time we are showing or is cropping option switching boundries
+				if(mCroppingOptionComboBox.Tag == null || mCroppingOptionComboBox.Tag is VerticalCropping)
+				{
+					mCroppingOptionComboBox.Tag = HoriztonalCropping.Center;
+					mCroppingOptionComboBox.DataSource = Enum.GetValues(typeof(HoriztonalCropping));
+					mCroppingOptionComboBox.Text = Enum.GetName(typeof(HoriztonalCropping), mCroppingOptionComboBox.Tag);
+				}
+				else
+				{
+					mCroppingOptionComboBox.Tag = (HoriztonalCropping)Enum.Parse(typeof(HoriztonalCropping), mCroppingOptionComboBox.Text);
+				}
+
+				cropArea = GetImageCropRectangle(scaleSize, mCropSize, (HoriztonalCropping)mCroppingOptionComboBox.Tag);
+			}
+			else if(scaleSize.Height > mCropSize.Height)
+			{
+				// Is this first time we are showing or is cropping option switching boundries
+				if(mCroppingOptionComboBox.Tag == null || mCroppingOptionComboBox.Tag is HoriztonalCropping)
+				{
+					mCroppingOptionComboBox.Tag = VerticalCropping.Center;
+					mCroppingOptionComboBox.DataSource = Enum.GetValues(typeof(VerticalCropping));
+					mCroppingOptionComboBox.Text = Enum.GetName(typeof(VerticalCropping), mCroppingOptionComboBox.Tag);
+				}
+				else
+				{
+					mCroppingOptionComboBox.Tag = (VerticalCropping)Enum.Parse(typeof(VerticalCropping), mCroppingOptionComboBox.Text);
+				}
+
+				cropArea = GetImageCropRectangle(scaleSize, mCropSize, (VerticalCropping)mCroppingOptionComboBox.Tag);
+			} // else the current dimensions are identical to the desired current dimensions 
+
+			if(cropArea != Rectangle.Empty)
+			{
+				mModifiedImage = ImageEditing.ScaleImage(mOpenImage, scaleSize);
+				mModifiedImage = ImageEditing.CropImage(mModifiedImage, cropArea);
+
+				SetPictureBoxWidth(mModifiedImage);
+				mPicturePreviewBox.Image = mModifiedImage;
+			}
+
+			mIsPreviewBoxUpdating = false;
+		}
+
 		#endregion Methods
+
 	}
 }

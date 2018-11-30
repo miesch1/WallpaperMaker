@@ -119,7 +119,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="joran_exe.ico" />
-    <Content Include="jordan_form.ico" />
     <Content Include="Resources\JordanDunk\dunks1645.jpg" />
     <Content Include="Resources\JordanDunk\dunks1646.jpg" />
     <Content Include="Resources\JordanDunk\dunks1647.jpg" />

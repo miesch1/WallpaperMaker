@@ -4,3 +4,6 @@ WallpaperMaker/bin/Debug/WallpaperMaker.vshost.exe
 WallpaperMaker/bin/Debug/WallpaperMaker.pdb
 WallpaperMaker/bin/Debug/WallpaperMaker.vshost.exe.manifest
 WallpaperMaker/obj/
+*.suo
+.vs/
+*.Cache

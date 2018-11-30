@@ -1,8 +1,0 @@
-obj\Debug\ResolveAssemblyReference.cache
-obj\Debug\WindowsApplication1.Properties.Resources.resources
-bin\Debug\WallpaperMaker.exe
-bin\Debug\WallpaperMaker.pdb
-obj\Debug\WallpaperMaker.csproj.GenerateResource.Cache
-obj\Debug\WallpaperMaker.exe
-obj\Debug\WallpaperMaker.pdb
-obj\Debug\WindowsApplication1.Main.resources

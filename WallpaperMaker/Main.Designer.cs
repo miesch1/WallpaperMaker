@@ -48,9 +48,9 @@ namespace WindowsApplication1
 			this.mSetWallpaperButton = new System.Windows.Forms.Button();
 			this.mMenuStrip = new System.Windows.Forms.MenuStrip();
 			this.mFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.mOpenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.mCloseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.mSaveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.mOpenPictureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.mClosePictureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.mSavePictureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.mSetAsWallpaperToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.mExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.mExtrasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -274,9 +274,9 @@ namespace WindowsApplication1
 			// mFileToolStripMenuItem
 			// 
 			this.mFileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mOpenToolStripMenuItem,
-            this.mCloseToolStripMenuItem,
-            this.mSaveAsToolStripMenuItem,
+            this.mOpenPictureToolStripMenuItem,
+            this.mClosePictureToolStripMenuItem,
+            this.mSavePictureToolStripMenuItem,
             this.mSetAsWallpaperToolStripMenuItem,
             this.mExitToolStripMenuItem});
 			this.mFileToolStripMenuItem.Image = global::WindowsApplication1.Properties.Resources.File;
@@ -284,29 +284,29 @@ namespace WindowsApplication1
 			this.mFileToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
 			this.mFileToolStripMenuItem.Text = "File";
 			// 
-			// mOpenToolStripMenuItem
+			// mOpenPictureToolStripMenuItem
 			// 
-			this.mOpenToolStripMenuItem.Image = global::WindowsApplication1.Properties.Resources.Open;
-			this.mOpenToolStripMenuItem.Name = "mOpenToolStripMenuItem";
-			this.mOpenToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
-			this.mOpenToolStripMenuItem.Text = "Open";
-			this.mOpenToolStripMenuItem.Click += new System.EventHandler(this.OpenToolStripMenuItem_Click);
+			this.mOpenPictureToolStripMenuItem.Image = global::WindowsApplication1.Properties.Resources.Open;
+			this.mOpenPictureToolStripMenuItem.Name = "mOpenPictureToolStripMenuItem";
+			this.mOpenPictureToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+			this.mOpenPictureToolStripMenuItem.Text = "Open";
+			this.mOpenPictureToolStripMenuItem.Click += new System.EventHandler(this.OpenPictureToolStripMenuItem_Click);
 			// 
-			// mCloseToolStripMenuItem
+			// mClosePictureToolStripMenuItem
 			// 
-			this.mCloseToolStripMenuItem.Image = global::WindowsApplication1.Properties.Resources.Close;
-			this.mCloseToolStripMenuItem.Name = "mCloseToolStripMenuItem";
-			this.mCloseToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
-			this.mCloseToolStripMenuItem.Text = "Close";
-			this.mCloseToolStripMenuItem.Click += new System.EventHandler(this.CloseToolStripMenuItem_Click);
+			this.mClosePictureToolStripMenuItem.Image = global::WindowsApplication1.Properties.Resources.Close;
+			this.mClosePictureToolStripMenuItem.Name = "mClosePictureToolStripMenuItem";
+			this.mClosePictureToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+			this.mClosePictureToolStripMenuItem.Text = "Close";
+			this.mClosePictureToolStripMenuItem.Click += new System.EventHandler(this.ClosePictureToolStripMenuItem_Click);
 			// 
-			// mSaveAsToolStripMenuItem
+			// mSavePictureToolStripMenuItem
 			// 
-			this.mSaveAsToolStripMenuItem.Image = global::WindowsApplication1.Properties.Resources.Save;
-			this.mSaveAsToolStripMenuItem.Name = "mSaveAsToolStripMenuItem";
-			this.mSaveAsToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
-			this.mSaveAsToolStripMenuItem.Text = "Save As...";
-			this.mSaveAsToolStripMenuItem.Click += new System.EventHandler(this.SaveAsToolStripMenuItem_Click);
+			this.mSavePictureToolStripMenuItem.Image = global::WindowsApplication1.Properties.Resources.Save;
+			this.mSavePictureToolStripMenuItem.Name = "mSavePictureToolStripMenuItem";
+			this.mSavePictureToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+			this.mSavePictureToolStripMenuItem.Text = "Save As...";
+			this.mSavePictureToolStripMenuItem.Click += new System.EventHandler(this.SavePictureToolStripMenuItem_Click);
 			// 
 			// mSetAsWallpaperToolStripMenuItem
 			// 
@@ -420,9 +420,9 @@ namespace WindowsApplication1
 		private System.Windows.Forms.Label mHeightLabel;
 		private WindowsApplication1.UInt32NumericUpDown mWidthTextBox;
 		private WindowsApplication1.UInt32NumericUpDown mHeightTextBox;
-		private System.Windows.Forms.ToolStripMenuItem mOpenToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem mCloseToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem mSaveAsToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem mOpenPictureToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem mClosePictureToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem mSavePictureToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem mSetAsWallpaperToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem mExitToolStripMenuItem;
 		private System.Windows.Forms.Timer mTimer;
