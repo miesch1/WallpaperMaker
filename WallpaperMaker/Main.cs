@@ -377,8 +377,7 @@ namespace WindowsApplication1
 			int height = currentImage.Height;
 			int width = currentImage.Width;
 
-			mPreviewGroupBox.Width = width * mPicturePreviewBox.Height / height + mPreviewGroupBox.Margin.Horizontal;
-			//mPicturePreviewBox.Width = width * mPicturePreviewBox.Height / height;
+			mPicturePreviewBox.Width = width * mPicturePreviewBox.Height / height;
 		}
 
 		private void StartJordanDunkClip()
@@ -438,7 +437,7 @@ namespace WindowsApplication1
 			Size scaleSize = GetImageScaleSize(mOpenImage.Size, mCropSize);
 			Rectangle cropArea = Rectangle.Empty;
 
-			if(scaleSize.Width > mCropSize.Width)
+			if(scaleSize.Width > mCropSize.Width) // Are we cropping vertically or horizontally
 			{
 				// Is this first time we are showing or is cropping option switching boundries
 				if(mCroppingOptionComboBox.Tag == null || mCroppingOptionComboBox.Tag is VerticalCropping)
@@ -454,7 +453,7 @@ namespace WindowsApplication1
 
 				cropArea = GetImageCropRectangle(scaleSize, mCropSize, (HoriztonalCropping)mCroppingOptionComboBox.Tag);
 			}
-			else if(scaleSize.Height > mCropSize.Height)
+			else
 			{
 				// Is this first time we are showing or is cropping option switching boundries
 				if(mCroppingOptionComboBox.Tag == null || mCroppingOptionComboBox.Tag is HoriztonalCropping)
@@ -469,16 +468,13 @@ namespace WindowsApplication1
 				}
 
 				cropArea = GetImageCropRectangle(scaleSize, mCropSize, (VerticalCropping)mCroppingOptionComboBox.Tag);
-			} // else the current dimensions are identical to the desired current dimensions 
-
-			if(cropArea != Rectangle.Empty)
-			{
-				mModifiedImage = ImageEditing.ScaleImage(mOpenImage, scaleSize);
-				mModifiedImage = ImageEditing.CropImage(mModifiedImage, cropArea);
-
-				SetPictureBoxWidth(mModifiedImage);
-				mPicturePreviewBox.Image = mModifiedImage;
 			}
+
+			mModifiedImage = ImageEditing.ScaleImage(mOpenImage, scaleSize);
+			mModifiedImage = ImageEditing.CropImage(mModifiedImage, cropArea);
+
+			SetPictureBoxWidth(mModifiedImage);
+			mPicturePreviewBox.Image = mModifiedImage;
 
 			mIsPreviewBoxUpdating = false;
 		}

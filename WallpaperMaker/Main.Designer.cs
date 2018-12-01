@@ -71,12 +71,16 @@ namespace WindowsApplication1
 			// 
 			// mPreviewGroupBox
 			// 
+			this.mPreviewGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.mPreviewGroupBox.AutoSize = true;
+			this.mPreviewGroupBox.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.mPreviewGroupBox.Controls.Add(this.mPicturePreviewBox);
-			this.mPreviewGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.mPreviewGroupBox.Location = new System.Drawing.Point(168, 3);
 			this.mPreviewGroupBox.Name = "mPreviewGroupBox";
 			this.mTableLayoutPanel.SetRowSpan(this.mPreviewGroupBox, 2);
-			this.mPreviewGroupBox.Size = new System.Drawing.Size(383, 306);
+			this.mPreviewGroupBox.Size = new System.Drawing.Size(381, 307);
 			this.mPreviewGroupBox.TabIndex = 1;
 			this.mPreviewGroupBox.TabStop = false;
 			this.mPreviewGroupBox.Text = "Preview";
@@ -84,18 +88,20 @@ namespace WindowsApplication1
 			// mPicturePreviewBox
 			// 
 			this.mPicturePreviewBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.mPicturePreviewBox.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.mPicturePreviewBox.InitialImage = null;
-			this.mPicturePreviewBox.Location = new System.Drawing.Point(3, 16);
+			this.mPicturePreviewBox.Location = new System.Drawing.Point(6, 18);
 			this.mPicturePreviewBox.MinimumSize = new System.Drawing.Size(4, 50);
 			this.mPicturePreviewBox.Name = "mPicturePreviewBox";
-			this.mPicturePreviewBox.Size = new System.Drawing.Size(377, 287);
+			this.mPicturePreviewBox.Size = new System.Drawing.Size(369, 284);
 			this.mPicturePreviewBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.mPicturePreviewBox.TabIndex = 0;
 			this.mPicturePreviewBox.TabStop = false;
 			// 
 			// mTableLayoutPanel
 			// 
+			this.mTableLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.mTableLayoutPanel.AutoSize = true;
 			this.mTableLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.mTableLayoutPanel.ColumnCount = 2;
@@ -104,14 +110,12 @@ namespace WindowsApplication1
 			this.mTableLayoutPanel.Controls.Add(this.mOptionsGroupBox, 0, 1);
 			this.mTableLayoutPanel.Controls.Add(this.mActionsGroupBox, 0, 0);
 			this.mTableLayoutPanel.Controls.Add(this.mPreviewGroupBox, 1, 0);
-			this.mTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.mTableLayoutPanel.Location = new System.Drawing.Point(0, 24);
 			this.mTableLayoutPanel.Name = "mTableLayoutPanel";
 			this.mTableLayoutPanel.RowCount = 2;
-			this.mTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 58.97436F));
-			this.mTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 41.02564F));
-			this.mTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-			this.mTableLayoutPanel.Size = new System.Drawing.Size(552, 312);
+			this.mTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 185F));
+			this.mTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 128F));
+			this.mTableLayoutPanel.Size = new System.Drawing.Size(552, 313);
 			this.mTableLayoutPanel.TabIndex = 8;
 			// 
 			// mOptionsGroupBox
@@ -123,7 +127,7 @@ namespace WindowsApplication1
 			this.mOptionsGroupBox.Controls.Add(this.mWidthTextBox);
 			this.mOptionsGroupBox.Controls.Add(this.mHeightTextBox);
 			this.mOptionsGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.mOptionsGroupBox.Location = new System.Drawing.Point(3, 187);
+			this.mOptionsGroupBox.Location = new System.Drawing.Point(3, 188);
 			this.mOptionsGroupBox.Name = "mOptionsGroupBox";
 			this.mOptionsGroupBox.Size = new System.Drawing.Size(159, 122);
 			this.mOptionsGroupBox.TabIndex = 9;
@@ -181,6 +185,11 @@ namespace WindowsApplication1
 			// mHeightTextBox
 			// 
 			this.mHeightTextBox.Location = new System.Drawing.Point(49, 46);
+			this.mHeightTextBox.Maximum = new decimal(new int[] {
+            -1,
+            0,
+            0,
+            0});
 			this.mHeightTextBox.Name = "mHeightTextBox";
 			this.mHeightTextBox.Size = new System.Drawing.Size(99, 20);
 			this.mHeightTextBox.TabIndex = 3;
@@ -191,7 +200,7 @@ namespace WindowsApplication1
 			this.mActionsGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.mActionsGroupBox.Location = new System.Drawing.Point(3, 3);
 			this.mActionsGroupBox.Name = "mActionsGroupBox";
-			this.mActionsGroupBox.Size = new System.Drawing.Size(159, 178);
+			this.mActionsGroupBox.Size = new System.Drawing.Size(159, 179);
 			this.mActionsGroupBox.TabIndex = 8;
 			this.mActionsGroupBox.TabStop = false;
 			this.mActionsGroupBox.Text = "Actions";
@@ -281,14 +290,14 @@ namespace WindowsApplication1
             this.mExitToolStripMenuItem});
 			this.mFileToolStripMenuItem.Image = global::WindowsApplication1.Properties.Resources.File;
 			this.mFileToolStripMenuItem.Name = "mFileToolStripMenuItem";
-			this.mFileToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
+			this.mFileToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
 			this.mFileToolStripMenuItem.Text = "File";
 			// 
 			// mOpenPictureToolStripMenuItem
 			// 
 			this.mOpenPictureToolStripMenuItem.Image = global::WindowsApplication1.Properties.Resources.Open;
 			this.mOpenPictureToolStripMenuItem.Name = "mOpenPictureToolStripMenuItem";
-			this.mOpenPictureToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+			this.mOpenPictureToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
 			this.mOpenPictureToolStripMenuItem.Text = "Open";
 			this.mOpenPictureToolStripMenuItem.Click += new System.EventHandler(this.OpenPictureToolStripMenuItem_Click);
 			// 
@@ -296,7 +305,7 @@ namespace WindowsApplication1
 			// 
 			this.mClosePictureToolStripMenuItem.Image = global::WindowsApplication1.Properties.Resources.Close;
 			this.mClosePictureToolStripMenuItem.Name = "mClosePictureToolStripMenuItem";
-			this.mClosePictureToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+			this.mClosePictureToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
 			this.mClosePictureToolStripMenuItem.Text = "Close";
 			this.mClosePictureToolStripMenuItem.Click += new System.EventHandler(this.ClosePictureToolStripMenuItem_Click);
 			// 
@@ -304,7 +313,7 @@ namespace WindowsApplication1
 			// 
 			this.mSavePictureToolStripMenuItem.Image = global::WindowsApplication1.Properties.Resources.Save;
 			this.mSavePictureToolStripMenuItem.Name = "mSavePictureToolStripMenuItem";
-			this.mSavePictureToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+			this.mSavePictureToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
 			this.mSavePictureToolStripMenuItem.Text = "Save As...";
 			this.mSavePictureToolStripMenuItem.Click += new System.EventHandler(this.SavePictureToolStripMenuItem_Click);
 			// 
@@ -312,14 +321,14 @@ namespace WindowsApplication1
 			// 
 			this.mSetAsWallpaperToolStripMenuItem.Image = global::WindowsApplication1.Properties.Resources.SetWallpaper;
 			this.mSetAsWallpaperToolStripMenuItem.Name = "mSetAsWallpaperToolStripMenuItem";
-			this.mSetAsWallpaperToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+			this.mSetAsWallpaperToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
 			this.mSetAsWallpaperToolStripMenuItem.Text = "Set As Wallpaper";
 			this.mSetAsWallpaperToolStripMenuItem.Click += new System.EventHandler(this.SetAsWallpaperToolStripMenuItem_Click);
 			// 
 			// mExitToolStripMenuItem
 			// 
 			this.mExitToolStripMenuItem.Name = "mExitToolStripMenuItem";
-			this.mExitToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+			this.mExitToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
 			this.mExitToolStripMenuItem.Text = "Exit";
 			this.mExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
 			// 
@@ -329,14 +338,14 @@ namespace WindowsApplication1
             this.mJordanDunkToolStripMenuItem});
 			this.mExtrasToolStripMenuItem.Image = global::WindowsApplication1.Properties.Resources.Extras;
 			this.mExtrasToolStripMenuItem.Name = "mExtrasToolStripMenuItem";
-			this.mExtrasToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
+			this.mExtrasToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
 			this.mExtrasToolStripMenuItem.Text = "Extras";
 			// 
 			// mJordanDunkToolStripMenuItem
 			// 
 			this.mJordanDunkToolStripMenuItem.Image = global::WindowsApplication1.Properties.Resources.Watch;
 			this.mJordanDunkToolStripMenuItem.Name = "mJordanDunkToolStripMenuItem";
-			this.mJordanDunkToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+			this.mJordanDunkToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
 			this.mJordanDunkToolStripMenuItem.Text = "Watch Jordan Dunk";
 			this.mJordanDunkToolStripMenuItem.Click += new System.EventHandler(this.JordanDunkToolStripMenuItem_Click);
 			// 
@@ -346,14 +355,14 @@ namespace WindowsApplication1
             this.mAboutToolStripMenuItem});
 			this.mHelpToolStripMenuItem.Image = global::WindowsApplication1.Properties.Resources.Help;
 			this.mHelpToolStripMenuItem.Name = "mHelpToolStripMenuItem";
-			this.mHelpToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
+			this.mHelpToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
 			this.mHelpToolStripMenuItem.Text = "Help";
 			// 
 			// mAboutToolStripMenuItem
 			// 
 			this.mAboutToolStripMenuItem.Image = global::WindowsApplication1.Properties.Resources.About;
 			this.mAboutToolStripMenuItem.Name = "mAboutToolStripMenuItem";
-			this.mAboutToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+			this.mAboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.mAboutToolStripMenuItem.Text = "About";
 			this.mAboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
 			// 
@@ -368,7 +377,7 @@ namespace WindowsApplication1
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.AutoSize = true;
 			this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.ClientSize = new System.Drawing.Size(552, 336);
+			this.ClientSize = new System.Drawing.Size(552, 335);
 			this.Controls.Add(this.mTableLayoutPanel);
 			this.Controls.Add(this.mMenuStrip);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -382,6 +391,7 @@ namespace WindowsApplication1
 			this.mPreviewGroupBox.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.mPicturePreviewBox)).EndInit();
 			this.mTableLayoutPanel.ResumeLayout(false);
+			this.mTableLayoutPanel.PerformLayout();
 			this.mOptionsGroupBox.ResumeLayout(false);
 			this.mOptionsGroupBox.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.mWidthTextBox)).EndInit();
