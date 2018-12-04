@@ -99,9 +99,6 @@ namespace WindowsApplication1
 			// 
 			// mTableLayoutPanel
 			// 
-			this.mTableLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
 			this.mTableLayoutPanel.AutoSize = true;
 			this.mTableLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.mTableLayoutPanel.ColumnCount = 2;
@@ -110,12 +107,13 @@ namespace WindowsApplication1
 			this.mTableLayoutPanel.Controls.Add(this.mOptionsGroupBox, 0, 1);
 			this.mTableLayoutPanel.Controls.Add(this.mActionsGroupBox, 0, 0);
 			this.mTableLayoutPanel.Controls.Add(this.mPreviewGroupBox, 1, 0);
+			this.mTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.mTableLayoutPanel.Location = new System.Drawing.Point(0, 24);
 			this.mTableLayoutPanel.Name = "mTableLayoutPanel";
 			this.mTableLayoutPanel.RowCount = 2;
 			this.mTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 185F));
 			this.mTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 128F));
-			this.mTableLayoutPanel.Size = new System.Drawing.Size(552, 313);
+			this.mTableLayoutPanel.Size = new System.Drawing.Size(552, 311);
 			this.mTableLayoutPanel.TabIndex = 8;
 			// 
 			// mOptionsGroupBox
@@ -362,7 +360,7 @@ namespace WindowsApplication1
 			// 
 			this.mAboutToolStripMenuItem.Image = global::WindowsApplication1.Properties.Resources.About;
 			this.mAboutToolStripMenuItem.Name = "mAboutToolStripMenuItem";
-			this.mAboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.mAboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
 			this.mAboutToolStripMenuItem.Text = "About";
 			this.mAboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
 			// 
@@ -436,6 +434,6 @@ namespace WindowsApplication1
 		private System.Windows.Forms.ToolStripMenuItem mSetAsWallpaperToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem mExitToolStripMenuItem;
 		private System.Windows.Forms.Timer mTimer;
-    }
+	}
 }
 

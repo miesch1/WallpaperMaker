@@ -16,18 +16,32 @@ namespace WindowsApplication1
 
 		private class NativeWindowListener : NativeWindow
 		{
-			private Form parent_form = null;
-			private Control listener_control = null;
-			private UInt32NumericUpDown owner = null;
+			private Control mListenerControl = null;
 
-			public bool ContextMenuIsDropped { get; set; }
+			private Form mParentForm = null;
 
 			// From WinUser.h
-			private const int EM_UNDO = 0x00C7;
-			private const int WM_CUT = 0x0300;
-			private const int WM_COPY = 0x0301;
 			private const int WM_PASTE = 0x0302;
-			private const int WM_CONTEXTMENU = 0x007B;
+
+			public decimal Maximum { get; set; }
+
+			public decimal Minimum { get; set; }
+
+			public int SelectionLength
+			{
+				get
+				{
+					return ((TextBox)mListenerControl).SelectionLength;
+				}
+			}
+
+			public int SelectionStart
+			{
+				get
+				{
+					return ((TextBox)mListenerControl).SelectionStart;
+				}
+			}
 
 			/// <summary>
 			/// Allows WndProc monitoring without needing to subclass the control.
@@ -37,49 +51,51 @@ namespace WindowsApplication1
 			{
 				AssignHandle(editControl.Handle);
 
-				owner = (UInt32NumericUpDown)editControl.Parent;
-				parent_form = owner.FindForm();
-				listener_control = editControl;
-				if(parent_form != null)
-					parent_form.FormClosed += new FormClosedEventHandler(ParentForm_Closed);
-
-				ContextMenuIsDropped = false;
+				mListenerControl = editControl;
+				UInt32NumericUpDown owner = (UInt32NumericUpDown)editControl.Parent;
+				mParentForm = owner.FindForm();
+				if(mParentForm != null)
+					mParentForm.FormClosed += new FormClosedEventHandler(ParentForm_Closed);
 			}
 
 			private void ParentForm_Closed(object sender, EventArgs e)
 			{
-				parent_form.FormClosed -= new FormClosedEventHandler(ParentForm_Closed);
+				mParentForm.FormClosed -= new FormClosedEventHandler(ParentForm_Closed);
 				ReleaseHandle();
 			}
+
 
 			protected override void WndProc(ref Message m)
 			{
 				switch(m.Msg)
 				{
-					case WM_CONTEXTMENU:
-						ContextMenuIsDropped = true;
-						break;
 					case WM_PASTE:
-						// Must check ContextMenuIsDropped because keyboard paste also sends this message.
-						if(ContextMenuIsDropped)
-						{
-							ContextMenuIsDropped = false;
-							//owner.ContextMenuPaste = true;
-						}
-
 						string text = Clipboard.GetText();
 						if(string.IsNullOrEmpty(text))
+						{
+							SystemSounds.Beep.Play();
 							return;
-
-						if((text.IndexOf('+') >= 0) && (((TextBox)listener_control).SelectionStart != 0))
-							return;
+						}
 
 						uint i;
-						if(!uint.TryParse(text, out i)) // change this for other integer types
+						if(!uint.TryParse(text, out i))
+						{
+							SystemSounds.Beep.Play();
 							return;
+						}
 
-						if((i < 0) && (((TextBox)listener_control).SelectionStart != 0))
+						// want to enforce that resulting paste results in positive number
+						int selectionStart = this.SelectionStart;
+						int selectionLength = this.SelectionLength;
+						string oldValue = ((TextBox)mListenerControl).Text;
+						string newValue = oldValue.Substring(0, selectionStart) + text + oldValue.Substring(selectionStart + selectionLength);
+						ulong j;
+						if(!ulong.TryParse(newValue, out j) || j < this.Minimum || j > this.Maximum)
+						{
+							SystemSounds.Beep.Play();
 							return;
+						}
+
 						break;
 				}
 
@@ -91,7 +107,7 @@ namespace WindowsApplication1
 
 		#region Fields
 
-		NativeWindowListener context_menu_listener = null;
+		private NativeWindowListener mPasteListener = null;
 
 		#endregion Fields
 
@@ -99,8 +115,36 @@ namespace WindowsApplication1
 
 		public UInt32NumericUpDown()
 		{
-			Minimum = 0;
-			Maximum = UInt32.MaxValue;
+		}
+
+		protected override void OnKeyDown(KeyEventArgs e)
+		{
+			base.OnKeyDown(e);
+
+			// delete (OnKeyPress does not capture del key)
+			if(e.KeyData == Keys.Delete)
+			{
+				int selectionStart = mPasteListener.SelectionStart;
+				string oldValue = this.Text;
+				if(selectionStart < oldValue.Length)
+				{
+					int selectionLength = mPasteListener.SelectionLength;
+					string newValue;
+					if(selectionLength > 0)
+						newValue = oldValue.Substring(0, selectionStart) + oldValue.Substring(selectionStart + selectionLength);
+					else
+						newValue = oldValue.Substring(0, selectionStart) + oldValue.Substring(selectionStart + 1);
+
+					ulong j;
+					if(ulong.TryParse(newValue, out j) && j >= this.Minimum && j < this.Maximum)
+					{
+						return;
+					}
+				}
+
+				SystemSounds.Beep.Play();
+				e.Handled = true;
+			}
 		}
 
 		protected override void OnKeyPress(KeyPressEventArgs e)
@@ -108,21 +152,57 @@ namespace WindowsApplication1
 			base.OnKeyPress(e);
 
 			string c = e.KeyChar.ToString();
+
 			if(char.IsDigit(c, 0))
-				return;
+			{
+				int selectionStart = mPasteListener.SelectionStart;
+				int selectionLength = mPasteListener.SelectionLength;
+				string oldValue = this.Text;
+				string newValue = oldValue.Substring(0, selectionStart) + c + oldValue.Substring(selectionStart + selectionLength);
+
+				ulong j;
+				if(ulong.TryParse(newValue, out j) && j >= this.Minimum && j < this.Maximum)
+				{
+					return;
+				}
+			}
 
 			// cut/copy/paste
 			if((((int)e.KeyChar == 24) || ((int)e.KeyChar == 3) || ((int)e.KeyChar == 22))
 				&& ((ModifierKeys & Keys.Control) == Keys.Control))
 				return;
 
+			// enter/new line
+			if(((int)e.KeyChar == '\r') || ((int)e.KeyChar == '\n'))
+				return;
+
 			// backspace
 			if(e.KeyChar == '\b')
-				return;
+			{
+				int selectionStart = mPasteListener.SelectionStart;
+				if(selectionStart > 0)
+				{
+					int selectionLength = mPasteListener.SelectionLength;
+					string oldValue = this.Text;
+					string newValue;
+					if(selectionLength > 0)
+						newValue = oldValue.Substring(0, selectionStart) + oldValue.Substring(selectionStart + selectionLength);
+					else
+						newValue = oldValue.Substring(0, selectionStart - 1) + oldValue.Substring(selectionStart);
+
+					ulong j;
+					if(ulong.TryParse(newValue, out j) && j >= this.Minimum && j < this.Maximum)
+					{
+						return;
+					}
+				}
+			}
 
 			// Normal NumericUpDown won't allow select all. We will provide that functionality here.
 			if(((int)e.KeyChar == 1) && ((ModifierKeys & Keys.Control) == Keys.Control))
+			{
 				((TextBox)this.Controls[1]).SelectAll();
+			}
 			// Handle all bad keypresses here
 			else
 				SystemSounds.Beep.Play();
@@ -130,45 +210,16 @@ namespace WindowsApplication1
 			e.Handled = true;
 		}
 
-		protected override void OnMouseUp(MouseEventArgs e)
-		{
-			base.OnMouseUp(e);
-
-			// Reset if user clicked outside the context menu to close it.
-			this.context_menu_listener.ContextMenuIsDropped = false;
-		}
-
-
 		// Needed an event that happens after the form is fully initialized.
 		protected override void OnVisibleChanged(EventArgs e)
 		{
 			base.OnVisibleChanged(e);
 
 			// Extract a reference to the underlying textbox edit field so we can trap the context menu paste click.
-			context_menu_listener = new NativeWindowListener((TextBox)this.Controls[1]);
+			mPasteListener = new NativeWindowListener((TextBox)this.Controls[1]);
+			mPasteListener.Minimum = this.Minimum;
+			mPasteListener.Maximum = this.Maximum;
 		}
-
-		//protected override void WndProc(ref System.Windows.Forms.Message m)
-		//{
-		//    if(m.Msg == WM_PASTE)
-		//    {
-		//        string text = Clipboard.GetText();
-		//        if(string.IsNullOrEmpty(text))
-		//            return;
-
-		//        if((text.IndexOf('+') >= 0) && (((TextBox)this.Controls[1]).SelectionStart != 0))
-		//            return;
-
-		//        uint i;
-		//        if(!uint.TryParse(text, out i)) // change this for other integer types
-		//            return;
-
-		//        if((i < 0) && (((TextBox)this.Controls[1]).SelectionStart != 0))
-		//            return;
-		//    }
-
-		//    base.WndProc(ref m);
-		//}
 
 		#endregion Methods
 	}

@@ -96,7 +96,8 @@ namespace WindowsApplication1
 			UpdatePreviewBox();
 		}
 
-		private void CropSizeTextBox_ValueChanged(object sender, EventArgs e)
+		// ValueChanged does not get updated until user hits enter or leaves box...
+		private void CropSizeTextBox_TextChanged(object sender, EventArgs e)
 		{
 			mCropSize = new Size(Convert.ToInt32(mWidthTextBox.Text), Convert.ToInt32(mHeightTextBox.Text));
 
@@ -280,10 +281,14 @@ namespace WindowsApplication1
 			DisableControls();
 			PopulateJordanDunks();
 			mCropSize = new Size(SystemInformation.PrimaryMonitorSize.Width, SystemInformation.PrimaryMonitorSize.Height);
+			mWidthTextBox.Minimum = 1;
+			mWidthTextBox.Maximum = UInt32.MaxValue;
 			mWidthTextBox.Text = mCropSize.Width.ToString();
+			mHeightTextBox.Minimum = 1;
+			mHeightTextBox.Maximum = UInt32.MaxValue;
 			mHeightTextBox.Text = mCropSize.Height.ToString();
-			mHeightTextBox.ValueChanged += CropSizeTextBox_ValueChanged;
-			mWidthTextBox.ValueChanged += CropSizeTextBox_ValueChanged;
+			mHeightTextBox.TextChanged += CropSizeTextBox_TextChanged;
+			mWidthTextBox.TextChanged += CropSizeTextBox_TextChanged;
 		}
 
 		private void OpenPicture()
@@ -343,7 +348,7 @@ namespace WindowsApplication1
 
 			if(saveDialog.ShowDialog() == DialogResult.OK)
 			{
-
+				ImageEditing.SaveImage(mModifiedImage, saveDialog.FileName);
 			}
 		}
 
