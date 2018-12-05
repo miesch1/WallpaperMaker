@@ -53,9 +53,9 @@
 			this.mTitleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(0)))), ((int)(((byte)(1)))));
 			this.mTitleLabel.Location = new System.Drawing.Point(83, 13);
 			this.mTitleLabel.Name = "mTitleLabel";
-			this.mTitleLabel.Size = new System.Drawing.Size(323, 25);
+			this.mTitleLabel.Size = new System.Drawing.Size(268, 25);
 			this.mTitleLabel.TabIndex = 3;
-			this.mTitleLabel.Text = "Scott\'s Cool Wallpaper Maker";
+			this.mTitleLabel.Text = "Scott\'s Wallpaper Maker";
 			this.mTitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// mVersionTextLabel

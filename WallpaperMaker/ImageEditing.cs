@@ -5,6 +5,7 @@ using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System.IO;
 
 namespace WindowsApplication1
 {
@@ -18,6 +19,72 @@ namespace WindowsApplication1
 			Bitmap bmpCrop = bmpImage.Clone(cropArea, bmpImage.PixelFormat);
 
 			return (Image)bmpCrop;
+		}
+
+		public static string GetSupportedDecodersFilter()
+		{
+			System.Text.StringBuilder filter = new System.Text.StringBuilder();
+			ImageCodecInfo[] decoders = ImageCodecInfo.GetImageDecoders();
+
+			// Add JPG first
+			int i;
+			for(i = 0; i < decoders.Length - 1; i++)
+			{
+				if(decoders[i].FormatDescription == "JPEG")
+				{
+					WriteSingleFilter(decoders[i], ref filter);
+					filter.Append("|");
+
+					break;
+				}
+			}
+
+			// Add remaining
+			for(int j = 0; j < decoders.Length - 1; j++)
+			{
+				// Skip JPG already added
+				if(j == i)
+					continue;
+
+				WriteSingleFilter(decoders[j], ref filter);
+				filter.Append("|");
+			}
+
+			filter.Append("All files (*.*)|*.*");
+			return filter.ToString();
+		}
+
+		public static string GetSupportedEncodersFilter()
+		{
+			System.Text.StringBuilder filter = new System.Text.StringBuilder();
+			ImageCodecInfo[] encoders = ImageCodecInfo.GetImageEncoders();
+
+			// Add JPG first
+			int i;
+			for(i = 0; i < encoders.Length - 1; i++)
+			{
+				if(encoders[i].FormatDescription == "JPEG")
+				{
+					WriteSingleFilter(encoders[i], ref filter);
+					filter.Append("|");
+
+					break;
+				}
+			}
+
+			// Add remaining
+			for(int j = 0; j < encoders.Length - 1; j++)
+			{
+				// Skip JPG already added
+				if(j == i)
+					continue;
+
+				WriteSingleFilter(encoders[j], ref filter);
+				filter.Append("|");
+			}
+
+			filter.Append("All files (*.*)|*.*");
+			return filter.ToString();
 		}
 
 		private static ImageCodecInfo GetEncoderInfo(string mimeType)
@@ -35,25 +102,46 @@ namespace WindowsApplication1
 
 		public static void SaveImage(Image img, string fileName)
 		{
-			// Get an ImageCodecInfo object that represents the JPEG codec.
-			ImageCodecInfo imageCodecInfo = GetEncoderInfo("image/jpeg");
-			if(imageCodecInfo == null)
-			{
-				throw new InvalidOperationException("jpeg is not a supported image codec.");
-			}
+			string extension = Path.GetExtension(fileName);
 
 			// Create an Encoder object based on the GUID  for the Quality parameter category.
 			Encoder encoder = Encoder.Quality;
 
-			// Create an EncoderParameters object.
-			// An EncoderParameters object has an array of EncoderParameter objects. In this case, there is only one EncoderParameter object in the array.
-			EncoderParameters encoderParameters = new EncoderParameters(1);
+			ImageCodecInfo[] encoders = ImageCodecInfo.GetImageEncoders();
+			ImageCodecInfo imageCodecInfo = null;
+			EncoderParameter encoderParameter = null;
+			for(int j = 0; j < encoders.Length - 1; j++)
+			{
+				if(encoders[j].FilenameExtension.IndexOf(extension, StringComparison.OrdinalIgnoreCase) >= 0)
+				{
+					imageCodecInfo = encoders[j];
+					if(imageCodecInfo.FormatDescription == "JPEG")
+					{
+						// Save the jpg with quality level 90. (0-100)
+						encoderParameter = new EncoderParameter(encoder, 90L);
+					}
+					else
+					{
+						// Value ignored, but need the encoder.
+						encoderParameter = new EncoderParameter(encoder, 0L);
+					}
+					break;
+				}
+			}
 
-			// Save the bitmap as a JPEG file with quality level 90.
-			EncoderParameter encoderParameter = new EncoderParameter(encoder, 90L);
-			encoderParameters.Param[0] = encoderParameter;
+			if(imageCodecInfo == null)
+			{
+				img.Save(fileName);
+			}
+			else
+			{
+				// Create an EncoderParameters object.
+				// An EncoderParameters object has an array of EncoderParameter objects. In this case, there is only one EncoderParameter object in the array.
+				EncoderParameters encoderParameters = new EncoderParameters(1);
+				encoderParameters.Param[0] = encoderParameter;
 
-			img.Save(fileName, imageCodecInfo, encoderParameters);
+				img.Save(fileName, imageCodecInfo, encoderParameters);
+			}
 		}
 
 		public static Image ScaleImage(Image img, Size scaledSize)
@@ -66,6 +154,15 @@ namespace WindowsApplication1
 			graphics.Dispose();
 
 			return bmpImage;
+		}
+
+		private static void WriteSingleFilter(ImageCodecInfo coder, ref System.Text.StringBuilder filter)
+		{
+			filter.Append(coder.FormatDescription);
+			filter.Append(" (");
+			filter.Append(coder.FilenameExtension);
+			filter.Append(")|");
+			filter.Append(coder.FilenameExtension);
 		}
 
 		#endregion Methods

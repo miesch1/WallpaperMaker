@@ -38,8 +38,6 @@ namespace WindowsApplication1
 			this.mCroppingOptionComboBox = new System.Windows.Forms.ComboBox();
 			this.mWidthLabel = new System.Windows.Forms.Label();
 			this.mHeightLabel = new System.Windows.Forms.Label();
-			this.mWidthTextBox = new WindowsApplication1.UInt32NumericUpDown();
-			this.mHeightTextBox = new WindowsApplication1.UInt32NumericUpDown();
 			this.mActionsGroupBox = new System.Windows.Forms.GroupBox();
 			this.mFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
 			this.mOpenPictureButton = new System.Windows.Forms.Button();
@@ -58,15 +56,17 @@ namespace WindowsApplication1
 			this.mHelpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.mAboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.mTimer = new System.Windows.Forms.Timer(this.components);
+			this.mWidthTextBox = new WindowsApplication1.UInt32NumericUpDown();
+			this.mHeightTextBox = new WindowsApplication1.UInt32NumericUpDown();
 			this.mPreviewGroupBox.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.mPicturePreviewBox)).BeginInit();
 			this.mTableLayoutPanel.SuspendLayout();
 			this.mOptionsGroupBox.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.mWidthTextBox)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.mHeightTextBox)).BeginInit();
 			this.mActionsGroupBox.SuspendLayout();
 			this.mFlowLayoutPanel.SuspendLayout();
 			this.mMenuStrip.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.mWidthTextBox)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.mHeightTextBox)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// mPreviewGroupBox
@@ -77,10 +77,11 @@ namespace WindowsApplication1
 			this.mPreviewGroupBox.AutoSize = true;
 			this.mPreviewGroupBox.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.mPreviewGroupBox.Controls.Add(this.mPicturePreviewBox);
-			this.mPreviewGroupBox.Location = new System.Drawing.Point(168, 3);
+			this.mPreviewGroupBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.mPreviewGroupBox.Location = new System.Drawing.Point(165, 3);
 			this.mPreviewGroupBox.Name = "mPreviewGroupBox";
 			this.mTableLayoutPanel.SetRowSpan(this.mPreviewGroupBox, 2);
-			this.mPreviewGroupBox.Size = new System.Drawing.Size(381, 307);
+			this.mPreviewGroupBox.Size = new System.Drawing.Size(386, 327);
 			this.mPreviewGroupBox.TabIndex = 1;
 			this.mPreviewGroupBox.TabStop = false;
 			this.mPreviewGroupBox.Text = "Preview";
@@ -89,10 +90,10 @@ namespace WindowsApplication1
 			// 
 			this.mPicturePreviewBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 			this.mPicturePreviewBox.InitialImage = null;
-			this.mPicturePreviewBox.Location = new System.Drawing.Point(6, 18);
+			this.mPicturePreviewBox.Location = new System.Drawing.Point(7, 19);
 			this.mPicturePreviewBox.MinimumSize = new System.Drawing.Size(4, 50);
 			this.mPicturePreviewBox.Name = "mPicturePreviewBox";
-			this.mPicturePreviewBox.Size = new System.Drawing.Size(369, 284);
+			this.mPicturePreviewBox.Size = new System.Drawing.Size(372, 300);
 			this.mPicturePreviewBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.mPicturePreviewBox.TabIndex = 0;
 			this.mPicturePreviewBox.TabStop = false;
@@ -102,7 +103,7 @@ namespace WindowsApplication1
 			this.mTableLayoutPanel.AutoSize = true;
 			this.mTableLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.mTableLayoutPanel.ColumnCount = 2;
-			this.mTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 165F));
+			this.mTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 162F));
 			this.mTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.mTableLayoutPanel.Controls.Add(this.mOptionsGroupBox, 0, 1);
 			this.mTableLayoutPanel.Controls.Add(this.mActionsGroupBox, 0, 0);
@@ -111,9 +112,9 @@ namespace WindowsApplication1
 			this.mTableLayoutPanel.Location = new System.Drawing.Point(0, 24);
 			this.mTableLayoutPanel.Name = "mTableLayoutPanel";
 			this.mTableLayoutPanel.RowCount = 2;
-			this.mTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 185F));
-			this.mTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 128F));
-			this.mTableLayoutPanel.Size = new System.Drawing.Size(552, 311);
+			this.mTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 187F));
+			this.mTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 146F));
+			this.mTableLayoutPanel.Size = new System.Drawing.Size(554, 333);
 			this.mTableLayoutPanel.TabIndex = 8;
 			// 
 			// mOptionsGroupBox
@@ -125,9 +126,10 @@ namespace WindowsApplication1
 			this.mOptionsGroupBox.Controls.Add(this.mWidthTextBox);
 			this.mOptionsGroupBox.Controls.Add(this.mHeightTextBox);
 			this.mOptionsGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.mOptionsGroupBox.Location = new System.Drawing.Point(3, 188);
+			this.mOptionsGroupBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.mOptionsGroupBox.Location = new System.Drawing.Point(3, 190);
 			this.mOptionsGroupBox.Name = "mOptionsGroupBox";
-			this.mOptionsGroupBox.Size = new System.Drawing.Size(159, 122);
+			this.mOptionsGroupBox.Size = new System.Drawing.Size(156, 140);
 			this.mOptionsGroupBox.TabIndex = 9;
 			this.mOptionsGroupBox.TabStop = false;
 			this.mOptionsGroupBox.Text = "Options";
@@ -135,70 +137,47 @@ namespace WindowsApplication1
 			// mCroppingOptionLabel
 			// 
 			this.mCroppingOptionLabel.AutoSize = true;
-			this.mCroppingOptionLabel.Location = new System.Drawing.Point(30, 76);
+			this.mCroppingOptionLabel.Location = new System.Drawing.Point(24, 84);
 			this.mCroppingOptionLabel.Name = "mCroppingOptionLabel";
-			this.mCroppingOptionLabel.Size = new System.Drawing.Size(81, 13);
+			this.mCroppingOptionLabel.Size = new System.Drawing.Size(105, 17);
 			this.mCroppingOptionLabel.TabIndex = 8;
 			this.mCroppingOptionLabel.Text = "Cropping option";
 			// 
 			// mCroppingOptionComboBox
 			// 
 			this.mCroppingOptionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.mCroppingOptionComboBox.Location = new System.Drawing.Point(8, 92);
+			this.mCroppingOptionComboBox.Location = new System.Drawing.Point(9, 107);
 			this.mCroppingOptionComboBox.Name = "mCroppingOptionComboBox";
-			this.mCroppingOptionComboBox.Size = new System.Drawing.Size(140, 21);
-			this.mCroppingOptionComboBox.TabIndex = 7;
+			this.mCroppingOptionComboBox.Size = new System.Drawing.Size(138, 25);
+			this.mCroppingOptionComboBox.TabIndex = 6;
 			this.mCroppingOptionComboBox.SelectedIndexChanged += new System.EventHandler(this.CroppingOptionComboBox_SelectedIndexChanged);
 			// 
 			// mWidthLabel
 			// 
 			this.mWidthLabel.AutoSize = true;
-			this.mWidthLabel.Location = new System.Drawing.Point(6, 23);
+			this.mWidthLabel.Location = new System.Drawing.Point(5, 23);
 			this.mWidthLabel.Name = "mWidthLabel";
-			this.mWidthLabel.Size = new System.Drawing.Size(35, 13);
+			this.mWidthLabel.Size = new System.Drawing.Size(42, 17);
 			this.mWidthLabel.TabIndex = 4;
 			this.mWidthLabel.Text = "Width";
 			// 
 			// mHeightLabel
 			// 
 			this.mHeightLabel.AutoSize = true;
-			this.mHeightLabel.Location = new System.Drawing.Point(6, 49);
+			this.mHeightLabel.Location = new System.Drawing.Point(5, 54);
 			this.mHeightLabel.Name = "mHeightLabel";
-			this.mHeightLabel.Size = new System.Drawing.Size(38, 13);
+			this.mHeightLabel.Size = new System.Drawing.Size(46, 17);
 			this.mHeightLabel.TabIndex = 5;
 			this.mHeightLabel.Text = "Height";
-			// 
-			// mWidthTextBox
-			// 
-			this.mWidthTextBox.Location = new System.Drawing.Point(49, 20);
-			this.mWidthTextBox.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-			this.mWidthTextBox.Name = "mWidthTextBox";
-			this.mWidthTextBox.Size = new System.Drawing.Size(99, 20);
-			this.mWidthTextBox.TabIndex = 2;
-			// 
-			// mHeightTextBox
-			// 
-			this.mHeightTextBox.Location = new System.Drawing.Point(49, 46);
-			this.mHeightTextBox.Maximum = new decimal(new int[] {
-            -1,
-            0,
-            0,
-            0});
-			this.mHeightTextBox.Name = "mHeightTextBox";
-			this.mHeightTextBox.Size = new System.Drawing.Size(99, 20);
-			this.mHeightTextBox.TabIndex = 3;
 			// 
 			// mActionsGroupBox
 			// 
 			this.mActionsGroupBox.Controls.Add(this.mFlowLayoutPanel);
 			this.mActionsGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.mActionsGroupBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.mActionsGroupBox.Location = new System.Drawing.Point(3, 3);
 			this.mActionsGroupBox.Name = "mActionsGroupBox";
-			this.mActionsGroupBox.Size = new System.Drawing.Size(159, 179);
+			this.mActionsGroupBox.Size = new System.Drawing.Size(156, 181);
 			this.mActionsGroupBox.TabIndex = 8;
 			this.mActionsGroupBox.TabStop = false;
 			this.mActionsGroupBox.Text = "Actions";
@@ -218,11 +197,12 @@ namespace WindowsApplication1
 			// mOpenPictureButton
 			// 
 			this.mOpenPictureButton.AutoSize = true;
+			this.mOpenPictureButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.mOpenPictureButton.Image = global::WindowsApplication1.Properties.Resources.Open;
 			this.mOpenPictureButton.Location = new System.Drawing.Point(3, 3);
 			this.mOpenPictureButton.Name = "mOpenPictureButton";
 			this.mOpenPictureButton.Size = new System.Drawing.Size(140, 34);
-			this.mOpenPictureButton.TabIndex = 7;
+			this.mOpenPictureButton.TabIndex = 0;
 			this.mOpenPictureButton.Text = "Open Picture";
 			this.mOpenPictureButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.mOpenPictureButton.UseVisualStyleBackColor = true;
@@ -231,11 +211,12 @@ namespace WindowsApplication1
 			// mClosePictureButton
 			// 
 			this.mClosePictureButton.AutoSize = true;
+			this.mClosePictureButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.mClosePictureButton.Image = global::WindowsApplication1.Properties.Resources.Close;
 			this.mClosePictureButton.Location = new System.Drawing.Point(3, 43);
 			this.mClosePictureButton.Name = "mClosePictureButton";
 			this.mClosePictureButton.Size = new System.Drawing.Size(140, 34);
-			this.mClosePictureButton.TabIndex = 10;
+			this.mClosePictureButton.TabIndex = 1;
 			this.mClosePictureButton.Text = "Close Picture";
 			this.mClosePictureButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.mClosePictureButton.UseVisualStyleBackColor = true;
@@ -243,11 +224,12 @@ namespace WindowsApplication1
 			// 
 			// mSavePictureButton
 			// 
+			this.mSavePictureButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.mSavePictureButton.Image = global::WindowsApplication1.Properties.Resources.Save;
 			this.mSavePictureButton.Location = new System.Drawing.Point(3, 83);
 			this.mSavePictureButton.Name = "mSavePictureButton";
 			this.mSavePictureButton.Size = new System.Drawing.Size(140, 34);
-			this.mSavePictureButton.TabIndex = 8;
+			this.mSavePictureButton.TabIndex = 2;
 			this.mSavePictureButton.Text = "Save Picture";
 			this.mSavePictureButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.mSavePictureButton.UseVisualStyleBackColor = true;
@@ -255,11 +237,12 @@ namespace WindowsApplication1
 			// 
 			// mSetWallpaperButton
 			// 
+			this.mSetWallpaperButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.mSetWallpaperButton.Image = global::WindowsApplication1.Properties.Resources.SetWallpaper;
 			this.mSetWallpaperButton.Location = new System.Drawing.Point(3, 123);
 			this.mSetWallpaperButton.Name = "mSetWallpaperButton";
 			this.mSetWallpaperButton.Size = new System.Drawing.Size(140, 34);
-			this.mSetWallpaperButton.TabIndex = 9;
+			this.mSetWallpaperButton.TabIndex = 3;
 			this.mSetWallpaperButton.Text = "Set As Wallpaper";
 			this.mSetWallpaperButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.mSetWallpaperButton.UseVisualStyleBackColor = true;
@@ -274,7 +257,7 @@ namespace WindowsApplication1
 			this.mMenuStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
 			this.mMenuStrip.Location = new System.Drawing.Point(0, 0);
 			this.mMenuStrip.Name = "mMenuStrip";
-			this.mMenuStrip.Size = new System.Drawing.Size(552, 24);
+			this.mMenuStrip.Size = new System.Drawing.Size(554, 24);
 			this.mMenuStrip.TabIndex = 9;
 			this.mMenuStrip.Text = "menuStrip1";
 			// 
@@ -295,7 +278,7 @@ namespace WindowsApplication1
 			// 
 			this.mOpenPictureToolStripMenuItem.Image = global::WindowsApplication1.Properties.Resources.Open;
 			this.mOpenPictureToolStripMenuItem.Name = "mOpenPictureToolStripMenuItem";
-			this.mOpenPictureToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+			this.mOpenPictureToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.mOpenPictureToolStripMenuItem.Text = "Open";
 			this.mOpenPictureToolStripMenuItem.Click += new System.EventHandler(this.OpenPictureToolStripMenuItem_Click);
 			// 
@@ -303,7 +286,7 @@ namespace WindowsApplication1
 			// 
 			this.mClosePictureToolStripMenuItem.Image = global::WindowsApplication1.Properties.Resources.Close;
 			this.mClosePictureToolStripMenuItem.Name = "mClosePictureToolStripMenuItem";
-			this.mClosePictureToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+			this.mClosePictureToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.mClosePictureToolStripMenuItem.Text = "Close";
 			this.mClosePictureToolStripMenuItem.Click += new System.EventHandler(this.ClosePictureToolStripMenuItem_Click);
 			// 
@@ -311,7 +294,7 @@ namespace WindowsApplication1
 			// 
 			this.mSavePictureToolStripMenuItem.Image = global::WindowsApplication1.Properties.Resources.Save;
 			this.mSavePictureToolStripMenuItem.Name = "mSavePictureToolStripMenuItem";
-			this.mSavePictureToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+			this.mSavePictureToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.mSavePictureToolStripMenuItem.Text = "Save As...";
 			this.mSavePictureToolStripMenuItem.Click += new System.EventHandler(this.SavePictureToolStripMenuItem_Click);
 			// 
@@ -319,14 +302,14 @@ namespace WindowsApplication1
 			// 
 			this.mSetAsWallpaperToolStripMenuItem.Image = global::WindowsApplication1.Properties.Resources.SetWallpaper;
 			this.mSetAsWallpaperToolStripMenuItem.Name = "mSetAsWallpaperToolStripMenuItem";
-			this.mSetAsWallpaperToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+			this.mSetAsWallpaperToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.mSetAsWallpaperToolStripMenuItem.Text = "Set As Wallpaper";
 			this.mSetAsWallpaperToolStripMenuItem.Click += new System.EventHandler(this.SetAsWallpaperToolStripMenuItem_Click);
 			// 
 			// mExitToolStripMenuItem
 			// 
 			this.mExitToolStripMenuItem.Name = "mExitToolStripMenuItem";
-			this.mExitToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+			this.mExitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.mExitToolStripMenuItem.Text = "Exit";
 			this.mExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
 			// 
@@ -343,7 +326,7 @@ namespace WindowsApplication1
 			// 
 			this.mJordanDunkToolStripMenuItem.Image = global::WindowsApplication1.Properties.Resources.Watch;
 			this.mJordanDunkToolStripMenuItem.Name = "mJordanDunkToolStripMenuItem";
-			this.mJordanDunkToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+			this.mJordanDunkToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.mJordanDunkToolStripMenuItem.Text = "Watch Jordan Dunk";
 			this.mJordanDunkToolStripMenuItem.Click += new System.EventHandler(this.JordanDunkToolStripMenuItem_Click);
 			// 
@@ -360,7 +343,7 @@ namespace WindowsApplication1
 			// 
 			this.mAboutToolStripMenuItem.Image = global::WindowsApplication1.Properties.Resources.About;
 			this.mAboutToolStripMenuItem.Name = "mAboutToolStripMenuItem";
-			this.mAboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+			this.mAboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.mAboutToolStripMenuItem.Text = "About";
 			this.mAboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
 			// 
@@ -369,13 +352,29 @@ namespace WindowsApplication1
 			this.mTimer.Interval = 40;
 			this.mTimer.Tick += new System.EventHandler(this.Timer_Tick);
 			// 
+			// mWidthTextBox
+			// 
+			this.mWidthTextBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.mWidthTextBox.Location = new System.Drawing.Point(58, 21);
+			this.mWidthTextBox.Name = "mWidthTextBox";
+			this.mWidthTextBox.Size = new System.Drawing.Size(89, 25);
+			this.mWidthTextBox.TabIndex = 4;
+			// 
+			// mHeightTextBox
+			// 
+			this.mHeightTextBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.mHeightTextBox.Location = new System.Drawing.Point(58, 52);
+			this.mHeightTextBox.Name = "mHeightTextBox";
+			this.mHeightTextBox.Size = new System.Drawing.Size(89, 25);
+			this.mHeightTextBox.TabIndex = 5;
+			// 
 			// Main
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.AutoSize = true;
 			this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.ClientSize = new System.Drawing.Size(552, 335);
+			this.ClientSize = new System.Drawing.Size(554, 357);
 			this.Controls.Add(this.mTableLayoutPanel);
 			this.Controls.Add(this.mMenuStrip);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -385,20 +384,20 @@ namespace WindowsApplication1
 			this.MinimizeBox = false;
 			this.Name = "Main";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "Scott\'s Cool Wallpaper Maker";
+			this.Text = "Scott\'s Wallpaper Maker";
 			this.mPreviewGroupBox.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.mPicturePreviewBox)).EndInit();
 			this.mTableLayoutPanel.ResumeLayout(false);
 			this.mTableLayoutPanel.PerformLayout();
 			this.mOptionsGroupBox.ResumeLayout(false);
 			this.mOptionsGroupBox.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.mWidthTextBox)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.mHeightTextBox)).EndInit();
 			this.mActionsGroupBox.ResumeLayout(false);
 			this.mFlowLayoutPanel.ResumeLayout(false);
 			this.mFlowLayoutPanel.PerformLayout();
 			this.mMenuStrip.ResumeLayout(false);
 			this.mMenuStrip.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.mWidthTextBox)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.mHeightTextBox)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

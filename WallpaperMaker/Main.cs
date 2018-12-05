@@ -95,6 +95,11 @@ namespace WindowsApplication1
 		{
 			UpdatePreviewBox();
 		}
+		
+		private void CropSizeTextBox_Enter(object sender, EventArgs e)
+		{
+			((NumericUpDown)sender).Select(0, ((NumericUpDown)sender).Text.Length);
+		}
 
 		// ValueChanged does not get updated until user hits enter or leaves box...
 		private void CropSizeTextBox_TextChanged(object sender, EventArgs e)
@@ -282,21 +287,28 @@ namespace WindowsApplication1
 			PopulateJordanDunks();
 			mCropSize = new Size(SystemInformation.PrimaryMonitorSize.Width, SystemInformation.PrimaryMonitorSize.Height);
 			mWidthTextBox.Minimum = 1;
-			mWidthTextBox.Maximum = UInt32.MaxValue;
+			mWidthTextBox.Maximum = 10000;
 			mWidthTextBox.Text = mCropSize.Width.ToString();
 			mHeightTextBox.Minimum = 1;
-			mHeightTextBox.Maximum = UInt32.MaxValue;
+			mHeightTextBox.Maximum = 10000;
 			mHeightTextBox.Text = mCropSize.Height.ToString();
 			mHeightTextBox.TextChanged += CropSizeTextBox_TextChanged;
 			mWidthTextBox.TextChanged += CropSizeTextBox_TextChanged;
+			mHeightTextBox.Click += CropSizeTextBox_Enter;
+			mWidthTextBox.Click += CropSizeTextBox_Enter;
+			mHeightTextBox.DoubleClick += CropSizeTextBox_Enter;
+			mWidthTextBox.DoubleClick += CropSizeTextBox_Enter;
+			mHeightTextBox.Enter += CropSizeTextBox_Enter;
+			mWidthTextBox.Enter += CropSizeTextBox_Enter;
 		}
 
 		private void OpenPicture()
 		{
 			OpenFileDialog openPictureDialog = new OpenFileDialog();
 			openPictureDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
-			openPictureDialog.Filter = "Picture files (*.jpg)|*.jpg|All files (*.*)|*.*";
+			openPictureDialog.Filter = ImageEditing.GetSupportedDecodersFilter();
 			openPictureDialog.FilterIndex = 1;
+			openPictureDialog.ValidateNames = true;
 			openPictureDialog.RestoreDirectory = false;
 
 			if(openPictureDialog.ShowDialog() == DialogResult.OK)
@@ -304,11 +316,19 @@ namespace WindowsApplication1
 				EnableControls();
 
 				FileInfo fileInfo = new FileInfo(openPictureDialog.FileName);
-				mSavePictureToolStripMenuItem.Text = "Save " + fileInfo.Name + " as...";
-				mOpenImage = Image.FromFile(openPictureDialog.FileName);
-				mOpenImage.Tag = fileInfo; // want to remember where it was located and what it's name is.
+				try
+				{
+					mOpenImage = Image.FromFile(openPictureDialog.FileName);
 
-				UpdatePreviewBox();
+					mSavePictureToolStripMenuItem.Text = "Save " + fileInfo.Name + " as...";
+					mOpenImage.Tag = fileInfo; // want to remember where it was located and what it's name is.
+
+					UpdatePreviewBox();
+				}
+				catch
+				{
+					MessageBox.Show("Error", string.Format("Unable to open {0}.", fileInfo.Name));
+				}
 			}
 		}
 
@@ -334,8 +354,10 @@ namespace WindowsApplication1
 		{
 			SaveFileDialog saveDialog = new SaveFileDialog();
 			saveDialog.InitialDirectory = Environment.CurrentDirectory;
-			saveDialog.Filter = "Picture files (*.jpg)|*.jpg|All files (*.*)|*.*";
+			saveDialog.Filter = ImageEditing.GetSupportedEncodersFilter();
 			saveDialog.FilterIndex = 1;
+			saveDialog.DefaultExt = "jpg";
+			saveDialog.ValidateNames = true;
 			saveDialog.RestoreDirectory = false;
 
 			// remove the extension from the name and add the new dimensions to the new name.
@@ -348,7 +370,14 @@ namespace WindowsApplication1
 
 			if(saveDialog.ShowDialog() == DialogResult.OK)
 			{
-				ImageEditing.SaveImage(mModifiedImage, saveDialog.FileName);
+				try
+				{
+					ImageEditing.SaveImage(mModifiedImage, saveDialog.FileName);
+				}
+				catch
+				{
+					MessageBox.Show("Error", string.Format("Unable to save {0}.", Path.GetFileName(saveDialog.FileName)));
+				}
 			}
 		}
 
