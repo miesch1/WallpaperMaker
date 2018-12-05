@@ -8,9 +8,10 @@
     <ProjectGuid>{FF4D2C25-8626-426D-BE2B-E9E3E818D06F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WindowsApplication1</RootNamespace>
+    <RootNamespace>WallpaperMaker</RootNamespace>
     <AssemblyName>WallpaperMaker</AssemblyName>
-    <ApplicationIcon>joran_exe.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>3.5</OldToolsVersion>
@@ -62,37 +63,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AboutBox.cs">
+    <Compile Include="View\AboutBox.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AboutBox.Designer.cs">
+    <Compile Include="View\AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="UInt32NumericUpDown.cs">
+    <Compile Include="View\UInt32NumericUpDown.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ImageEditing.cs" />
+    <Compile Include="Utility\ImageEditing.cs" />
     <Compile Include="Properties\JordanDunk.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>JordanDunk.resx</DependentUpon>
     </Compile>
-    <Compile Include="Main.cs">
+    <Compile Include="View\Main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Main.Designer.cs">
+    <Compile Include="View\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AboutBox.resx">
+    <EmbeddedResource Include="View\AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\JordanDunk.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>JordanDunk.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Main.resx">
+    <EmbeddedResource Include="View\Main.resx">
       <SubType>Designer</SubType>
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
@@ -117,7 +118,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="joran_exe.ico" />
+    <None Include="Resources\JordanInverted.jpg" />
+    <None Include="Resources\Jordan.ico" />
     <Content Include="Resources\JordanDunk\dunks1645.jpg" />
     <Content Include="Resources\JordanDunk\dunks1646.jpg" />
     <Content Include="Resources\JordanDunk\dunks1647.jpg" />
@@ -333,6 +335,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

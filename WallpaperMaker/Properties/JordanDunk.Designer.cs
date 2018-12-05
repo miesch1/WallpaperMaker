@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WindowsApplication1.Properties {
+namespace WallpaperMaker.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace WindowsApplication1.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WindowsApplication1.Properties.JordanDunk", typeof(JordanDunk).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WallpaperMaker.Properties.JordanDunk", typeof(JordanDunk).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using WallpaperMaker.View;
 
-namespace WindowsApplication1
+namespace WallpaperMaker
 {
     static class Program
     {
