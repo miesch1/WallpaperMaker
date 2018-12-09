@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Globalization;
-using System.Windows.Forms;
 using System.Media;
-using System.Reflection;
+using System.Windows.Forms;
 
 namespace WallpaperMaker.View
 {

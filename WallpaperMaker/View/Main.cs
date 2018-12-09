@@ -4,7 +4,6 @@ using System.IO;
 using System.Windows.Forms;
 using WallpaperMaker.Properties;
 using WallpaperMaker.Utility;
-using WallpaperMaker.View;
 
 namespace WallpaperMaker.View
 {
@@ -327,9 +326,15 @@ namespace WallpaperMaker.View
 
 					UpdatePreviewBox();
 				}
-				catch
+				catch(Exception e)
 				{
-					MessageBox.Show("Error", string.Format("Unable to open {0}.", fileInfo.Name));
+					MessageBox.Show
+					(
+						string.Format("Unable to open {0}.", fileInfo.Name) +
+						Environment.NewLine +
+						string.Format("Error Information: {0}", e.Message),
+						"Error"
+					);
 				}
 			}
 		}
@@ -376,9 +381,15 @@ namespace WallpaperMaker.View
 				{
 					ImageEditing.SaveImage(mModifiedImage, saveDialog.FileName);
 				}
-				catch
+				catch(Exception e)
 				{
-					MessageBox.Show("Error", string.Format("Unable to save {0}.", Path.GetFileName(saveDialog.FileName)));
+					MessageBox.Show
+					(
+						string.Format("Unable to save {0}.", Path.GetFileName(saveDialog.FileName)) +
+						Environment.NewLine +
+						string.Format("Error Information: {0}", e.Message),
+						"Error"
+					);
 				}
 			}
 		}
@@ -395,7 +406,23 @@ namespace WallpaperMaker.View
 
 		private void SetAsWallpaper()
 		{
-
+			string fileName = Path.GetTempPath() + "wallpaper";
+			try
+			{
+				// Without specifying an extension, the default BMP encoder will be used. JPG also tested here.
+				ImageEditing.SaveImage(mModifiedImage, fileName);
+				ShObjIdlCoreHelper.SetWallpaper(fileName);
+			}
+			catch(Exception e)
+			{
+				MessageBox.Show
+				(
+					string.Format("Unable to set wallpaper. Note that only Windows 10 and beyond is supported.") +
+					Environment.NewLine +
+					string.Format("Error Information: {0}", e.Message),
+					"Error"
+				);
+			}
 		}
 
 		private void SetAsWallpaperButton_Click(object sender, EventArgs e)

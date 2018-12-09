@@ -1,6 +1,6 @@
 namespace WallpaperMaker.View
 {
-    partial class Main
+	partial class Main
     {
         /// <summary>
         /// Required designer variable.
