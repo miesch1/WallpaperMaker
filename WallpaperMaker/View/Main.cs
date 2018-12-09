@@ -1,3 +1,4 @@
+using ShObjIdlCoreTypeLib;
 using System;
 using System.Drawing;
 using System.IO;
@@ -269,6 +270,22 @@ namespace WallpaperMaker.View
 			return new Size(destWidth, destHeight);
 		}
 
+		//-----------------------------------------------------------------------------------------------------------------------
+		/// <summary>
+		///   Returns a value indicating whether the current operating system is at least Windows 8.
+		/// </summary>
+		/// 
+		/// <returns>A value indicating whether the current operating system is at least Windows 8.</returns>
+		//-----------------------------------------------------------------------------------------------------------------------
+		private static bool GetIsWindows8()
+		{
+			OperatingSystem oS = Environment.OSVersion;
+
+			// NOTE: WIN 8 is 6.2. (NOTE: 6.2 will also be reported beyond Windows 8 if the application manifest does not
+			// include entires for newer supported OSs (such as Windows 10).
+			return oS.Platform == PlatformID.Win32NT && new Version(oS.Version.Major, oS.Version.Minor) >= new Version(6, 2);
+		}
+
 		private void JordanDunkToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			if (mJordanDunkToolStripMenuItem.Text == "Watch Jordan Dunk")
@@ -411,13 +428,21 @@ namespace WallpaperMaker.View
 			{
 				// Without specifying an extension, the default BMP encoder will be used. JPG also tested here.
 				ImageEditing.SaveImage(mModifiedImage, fileName);
-				ShObjIdlCoreHelper.SetWallpaper(fileName);
+
+				if(GetIsWindows8())
+				{
+					ShObjIdlCoreHelper.SetWallpaper(fileName, DESKTOP_WALLPAPER_POSITION.DWPOS_CENTER);
+				}
+				else
+				{
+					LegacyWallpaperHelper.SetWallpaper(fileName, LegacyWallpaperHelper.Style.Centered);
+				}
 			}
 			catch(Exception e)
 			{
 				MessageBox.Show
 				(
-					string.Format("Unable to set wallpaper. Note that only Windows 10 and beyond is supported.") +
+					string.Format("Unable to set wallpaper.") +
 					Environment.NewLine +
 					string.Format("Error Information: {0}", e.Message),
 					"Error"

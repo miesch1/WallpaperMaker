@@ -9,6 +9,8 @@ namespace WallpaperMaker.Utility
 	/// <summary>
 	///   Provides methods that are used to manipulate the desktop wallpaper.
 	/// </summary>
+	/// 
+	/// <remarks>Supported only in Windows 8 and beyond.</remarks>
 	//---------------------------------------------------------------------------------------------------------------------------
 	public class ShObjIdlCoreHelper
 	{
@@ -62,7 +64,7 @@ namespace WallpaperMaker.Utility
 		/// 
 		/// <exception cref="COMException">Could not create or interact with the required COM object.</exception>
 		//-----------------------------------------------------------------------------------------------------------------------
-		public static void SetWallpaper(string fileName)
+		public static void SetWallpaper(string fileName, DESKTOP_WALLPAPER_POSITION position)
 		{
 			if(mIDesktopWallpaper == null)
 				throw new COMException("Could not create IDesktopWallpaper COM object.");
@@ -73,6 +75,7 @@ namespace WallpaperMaker.Utility
 				// second a path to the wallpaper. If NULL is passed as the monitor identifier to SetWallpaper, then that
 				// wallpaper will be set for all monitors.
 				mIDesktopWallpaper.SetWallpaper(null, fileName);
+				mIDesktopWallpaper.SetPosition(position);
 			}
 			catch(COMException)
 			{

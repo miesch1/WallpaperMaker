@@ -102,11 +102,17 @@ namespace WallpaperMaker.Utility
 
 		public static void SaveImage(Image img, string fileName)
 		{
+			// If the directory doesn't exist, the call to save below fails ("A generic error occurred in GDI+.").
+			string folder = Path.GetDirectoryName(fileName);
+			if(!Directory.Exists(folder))
+			{
+				Directory.CreateDirectory(folder);
+			}
+
 			string extension = Path.GetExtension(fileName);
 
 			// Create an Encoder object based on the GUID  for the Quality parameter category.
 			Encoder encoder = Encoder.Quality;
-
 			ImageCodecInfo[] encoders = ImageCodecInfo.GetImageEncoders();
 			ImageCodecInfo imageCodecInfo = null;
 			EncoderParameter encoderParameter = null;
