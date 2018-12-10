@@ -32,6 +32,7 @@ my application.
 
 Current limitations:
 * Have not tested on Vista, Windows 8, or Windows 8.1.
+* JPG images are hard-coded with a 90 compression quality (0-100). Other image encoder options are all left at default.
 * Set As Wallpaper only supports setting static images.
 * Set As Wallpaper always sets the same image to all monitors. Even though other positions are supported, Centered is used for how
 Windows treats the wallpaper (as opposed to stretch, tile, etc.).
