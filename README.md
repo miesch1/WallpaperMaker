@@ -29,6 +29,7 @@ This application has several noteworthy features:
 * Offers a COM interop solution for using the new IDesktopWallpaper API for OSs starting with Windows 8. Did not have to generate
 the interop code myself. Rather, used an IDL file from the Windows 10 SDK to generate a TLB, then a DLL. Interop types are merged into
 my application.
+* Extensive bounds checking to ensure height and width boxes are always valid, yet easily modifiable.
 
 Current limitations:
 * Have not tested on Vista, Windows 8, or Windows 8.1.
