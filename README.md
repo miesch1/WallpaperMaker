@@ -15,8 +15,10 @@ background for those who disagree.
 WallpaperMaker is intended to be as simple as possible. Point it to any image supported on your system. Choose a desired width
 and height of your image (default is the resolution of your primary monitor). If the image needs to be cropped vertically, select
 Top, Bottom, or leave the default Center option. If the image needs to be cropped horizontally, select Right, Left, or leave the 
-default Center option. If you want to save the modified picture, select Save Picture. If you want to set the background with the
-currently modified image, click Set As Wallpaper. Easy as that.
+default Center option. A preview box shows you the resulting image. If you want to save the modified picture, select Save Picture.
+If you want to set the background with the currently modified image, click Set As Wallpaper. Easy as that.
+
+![alt text](https://github.com/miesch1/WallpaperMaker/blob/master/screenshot.png "WallpaperMaker screenshot")
 
 The API actually supports multiple options for setting the wallpaper, but the GUI does not expose those options. The image is
 simply centered on all monitors. Future updates could expose those options, if necessary.
