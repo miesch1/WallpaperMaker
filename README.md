@@ -35,3 +35,6 @@ Current limitations:
 * Set As Wallpaper only supports setting static images.
 * Set As Wallpaper always sets the same image to all monitors. Even though other positions are supported, Centered is used for how
 Windows treats the image (as opposed to stretch, tile, etc.).
+
+Special thanks:
+* Used icons from the famfamfam silk v013 set.
