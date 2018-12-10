@@ -38,3 +38,4 @@ Windows treats the wallpaper (as opposed to stretch, tile, etc.).
 
 Special thanks:
 * Used icons from the famfamfam silk v013 set.
+* MJ for gracing the world with his amazing Foul Line Dunk, which you can view from the Extras dropdown.
