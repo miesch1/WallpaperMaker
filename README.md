@@ -24,7 +24,7 @@ The API actually supports multiple options for setting the wallpaper, but the GU
 simply centered on all monitors. Future updates could expose those options, if necessary.
 
 This application has several noteworthy features:
-* Dynamically builds the list of supported image file types to open a save, based on available encoders and decoders on the system.
+* Dynamically builds the list of supported image file types to open and save, based on available encoders and decoders on the system.
 * Supports setting the desktop using the legacy API for OSs before Windows 8.
 * Offers a COM interop solution for using the new IDesktopWallpaper API for OSs starting with Windows 8. Did not have to generate
 the interop code myself. Rather, used an IDL file from the Windows 10 SDK to generate a TLB, then a DLL. Interop types are merged into
